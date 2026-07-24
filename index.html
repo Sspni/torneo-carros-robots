@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- SEO básico -->
+    <title>Torneo Escolar de Carros Robots | Competencia de Robótica Estudiantil</title>
+    <meta name="description" content="Sitio oficial del Torneo Escolar de Carros Robots. Inscripciones, categorías (Sumo, Soccer, Fútbol Americano, 40 Metros, Laberinto), clasificaciones en vivo y toda la información del evento.">
+    <meta name="keywords" content="torneo robots, carros robots, sumo robots, robótica escolar, competencia STEM, torneo escolar">
+    <meta name="author" content="Torneo Escolar de Carros Robots">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.torneorobots.edu.co/">
+
+    <!-- Open Graph / Redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Torneo Escolar de Carros Robots">
+    <meta property="og:description" content="Compite, aprende e innova en el Torneo Escolar de Carros Robots. Categorías, inscripciones y clasificaciones en un solo lugar.">
+    <meta property="og:image" content="assets/img/og-cover.jpg">
+    <meta property="og:url" content="https://www.torneorobots.edu.co/">
+    <meta property="og:locale" content="es_CO">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Torneo Escolar de Carros Robots">
+    <meta name="twitter:description" content="Compite, aprende e innova en el Torneo Escolar de Carros Robots.">
+    <meta name="twitter:image" content="assets/img/og-cover.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- model-viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <!-- ============ NAVBAR ============ -->
+    <header id="navbar" class="navbar" role="banner">
+        <nav class="navbar__container" role="navigation" aria-label="Navegación principal">
+            <a href="#hero" class="navbar__brand" aria-label="Ir al inicio - Torneo Escolar de Carros Robots">
+                <img src="assets/img/logo.svg" alt="Logotipo del Torneo Escolar de Carros Robots" class="navbar__logo">
+                <span class="navbar__title">Torneo de Carros Robots</span>
+            </a>
+
+            <button type="button" id="navToggle" class="navbar__toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                <span class="navbar__toggle-bar"></span>
+                <span class="navbar__toggle-bar"></span>
+                <span class="navbar__toggle-bar"></span>
+            </button>
+
+            <ul id="navMenu" class="navbar__menu" role="menubar">
+                <li role="none"><a role="menuitem" href="#hero" class="navbar__link">Inicio</a></li>
+                <li role="none"><a role="menuitem" href="#modelo-3d" class="navbar__link">Modelo 3D</a></li>
+                <li role="none"><a role="menuitem" href="#informacion-general" class="navbar__link">Información</a></li>
+                <li role="none"><a role="menuitem" href="#deportes" class="navbar__link">Categorías</a></li>
+                <li role="none"><a role="menuitem" href="#inscripcion" class="navbar__link">Inscripción</a></li>
+                <li role="none"><a role="menuitem" href="#clasificaciones" class="navbar__link">Clasificaciones</a></li>
+                <li role="none"><a role="menuitem" href="#proximamente" class="navbar__link">Próximamente</a></li>
+                <li role="none"><a role="menuitem" href="#contacto" class="navbar__link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============ HERO ============ -->
+        <section id="hero" class="hero" aria-label="Presentación principal del torneo">
+            <div class="hero__container">
+                <p class="hero__eyebrow">Edición Anual</p>
+                <h1 class="hero__title">Torneo Escolar de Carros Robots</h1>
+                <p class="hero__subtitle">Robótica, ingeniería y competencia en un solo escenario. Construye, programa y compite.</p>
+                <div class="hero__actions">
+                    <a href="#inscripcion" class="btn btn--primary" aria-label="Ir a la sección de inscripción">Inscribir mi equipo</a>
+                    <a href="#deportes" class="btn btn--secondary" aria-label="Ver categorías del torneo">Ver categorías</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ MODELO 3D ============ -->
+        <section id="modelo-3d" class="model-section" aria-labelledby="modelo-3d-titulo">
+            <div class="model-section__container">
+                <h2 id="modelo-3d-titulo" class="section-title">Explora el Carro Robot</h2>
+                <p class="section-description">Gira, acerca y descubre el diseño oficial del carro robot en 3D.</p>
+
+                <model-viewer
+                    id="robotModel"
+                    class="model-viewer"
+                    src="assets/models/carro-robot.glb"
+                    ios-src="assets/models/carro-robot.usdz"
+                    alt="Modelo 3D interactivo del carro robot oficial del torneo"
+                    poster="assets/img/model-poster.jpg"
+                    camera-controls
+                    auto-rotate
+                    shadow-intensity="1"
+                    exposure="1"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    aria-label="Visor interactivo del modelo 3D del carro robot">
+                    <button slot="ar-button" class="model-viewer__ar-button" aria-label="Ver el carro robot en realidad aumentada">
+                        Ver en tu espacio
+                    </button>
+                </model-viewer>
+            </div>
+        </section>
+
+        <!-- ============ INFORMACIÓN GENERAL ============ -->
+        <section id="informacion-general" class="info-section" aria-labelledby="info-general-titulo">
+            <div class="info-section__container">
+                <h2 id="info-general-titulo" class="section-title">Información General</h2>
+                <div class="info-section__grid">
+                    <article class="info-card" aria-label="Fecha del evento">
+                        <h3 class="info-card__title">Fecha</h3>
+                        <p class="info-card__text">Sábado 12 de septiembre, 8:00 a.m. - 4:00 p.m.</p>
+                    </article>
+                    <article class="info-card" aria-label="Lugar del evento">
+                        <h3 class="info-card__title">Lugar</h3>
+                        <p class="info-card__text">Coliseo Deportivo Institucional</p>
+                    </article>
+                    <article class="info-card" aria-label="Requisitos de participación">
+                        <h3 class="info-card__title">Requisitos</h3>
+                        <p class="info-card__text">Equipos de 2 a 4 estudiantes, robot propio, reglamento firmado.</p>
+                    </article>
+                    <article class="info-card" aria-label="Premios del torneo">
+                        <h3 class="info-card__title">Premios</h3>
+                        <p class="info-card__text">Trofeos, medallas y kits de robótica para los primeros lugares.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DEPORTES / CATEGORÍAS (TABS) ============ -->
+        <section id="deportes" class="sports-section" aria-labelledby="deportes-titulo">
+            <div class="sports-section__container">
+                <h2 id="deportes-titulo" class="section-title">Categorías del Torneo</h2>
+
+                <div class="tabs" role="tablist" aria-label="Categorías de competencia">
+                    <button class="tabs__button" id="tab-sumo" role="tab" aria-selected="true" aria-controls="panel-sumo">Sumo</button>
+                    <button class="tabs__button" id="tab-soccer" role="tab" aria-selected="false" aria-controls="panel-soccer" tabindex="-1">Soccer</button>
+                    <button class="tabs__button" id="tab-futbol-americano" role="tab" aria-selected="false" aria-controls="panel-futbol-americano" tabindex="-1">Fútbol Americano</button>
+                    <button class="tabs__button" id="tab-40-metros" role="tab" aria-selected="false" aria-controls="panel-40-metros" tabindex="-1">40 Metros</button>
+                    <button class="tabs__button" id="tab-laberinto" role="tab" aria-selected="false" aria-controls="panel-laberinto" tabindex="-1">Laberinto</button>
+                </div>
+
+                <div class="tabs__panels">
+
+                    <!-- SUMO -->
+                    <article id="sumo" class="tab-panel" role="tabpanel" aria-labelledby="tab-sumo" tabindex="0">
+                        <div id="panel-sumo" class="tab-panel__content">
+                            <h3 class="tab-panel__title">Sumo</h3>
+                            <p class="tab-panel__text">Dos robots se enfrentan dentro de un ring circular. Gana quien saque al oponente del área de combate.</p>
+                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Sumo">
+                                <li>Peso máximo: 1 kg</li>
+                                <li>Dimensiones máximas: 20 x 20 cm</li>
+                                <li>Duración del combate: 3 minutos</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- SOCCER -->
+                    <article id="soccer" class="tab-panel" role="tabpanel" aria-labelledby="tab-soccer" tabindex="0" hidden>
+                        <div id="panel-soccer" class="tab-panel__content">
+                            <h3 class="tab-panel__title">Soccer</h3>
+                            <p class="tab-panel__text">Equipos de robots compiten para anotar goles en una cancha reducida usando control remoto o autonomía.</p>
+                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Soccer">
+                                <li>Equipos de 2 robots</li>
+                                <li>Duración: 2 tiempos de 5 minutos</li>
+                                <li>Balón infrarrojo reglamentario</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- FÚTBOL AMERICANO -->
+                    <article id="futbol-americano" class="tab-panel" role="tabpanel" aria-labelledby="tab-futbol-americano" tabindex="0" hidden>
+                        <div id="panel-futbol-americano" class="tab-panel__content">
+                            <h3 class="tab-panel__title">Fútbol Americano</h3>
+                            <p class="tab-panel__text">Robots avanzan por un campo esquivando obstáculos y oponentes para anotar en la zona final.</p>
+                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Fútbol Americano">
+                                <li>Campo de 3 metros de largo</li>
+                                <li>Contacto controlado permitido</li>
+                                <li>Anotación por zona final</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- 40 METROS -->
+                    <article id="cuarenta-metros" class="tab-panel" role="tabpanel" aria-labelledby="tab-40-metros" tabindex="0" hidden>
+                        <div id="panel-40-metros" class="tab-panel__content">
+                            <h3 class="tab-panel__title">40 Metros</h3>
+                            <p class="tab-panel__text">Prueba de velocidad en línea recta. Gana el robot con el mejor tiempo registrado.</p>
+                            <ul class="tab-panel__list" aria-label="Reglas rápidas de 40 Metros">
+                                <li>Pista recta de 40 metros</li>
+                                <li>Dos intentos por equipo</li>
+                                <li>Cronometraje electrónico</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- LABERINTO -->
+                    <article id="laberinto" class="tab-panel" role="tabpanel" aria-labelledby="tab-laberinto" tabindex="0" hidden>
+                        <div id="panel-laberinto" class="tab-panel__content">
+                            <h3 class="tab-panel__title">Laberinto</h3>
+                            <p class="tab-panel__text">Robots autónomos deben resolver un laberinto físico en el menor tiempo posible.</p>
+                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Laberinto">
+                                <li>Sensores permitidos: ultrasónico, infrarrojo, línea</li>
+                                <li>Tiempo límite: 5 minutos</li>
+                                <li>Penalización por colisión</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ INSCRIPCIÓN ============ -->
+        <section id="inscripcion" class="registration-section" aria-labelledby="inscripcion-titulo">
+            <div class="registration-section__container">
+                <h2 id="inscripcion-titulo" class="section-title">Inscripción de Equipos</h2>
+                <p class="section-description">Completa el formulario oficial para inscribir a tu equipo en el torneo.</p>
+
+                <div class="registration-section__form-wrapper">
+                    <iframe
+                        id="googleFormFrame"
+                        class="registration-section__iframe"
+                        src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"
+                        title="Formulario oficial de inscripción al Torneo Escolar de Carros Robots"
+                        loading="lazy">
+                        Cargando formulario…
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CLASIFICACIONES ============ -->
+        <section id="clasificaciones" class="standings-section" aria-labelledby="clasificaciones-titulo">
+            <div class="standings-section__container">
+                <h2 id="clasificaciones-titulo" class="section-title">Clasificaciones</h2>
+                <p class="section-description">Resultados actualizados en tiempo real desde Google Sheets.</p>
+
+                <div class="standings-section__table-wrapper">
+                    <table id="standingsTable" class="standings-table" aria-label="Tabla de clasificaciones del torneo">
+                        <caption class="sr-only">Clasificación general de equipos por categoría</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsTableBody">
+                            <!-- Filas generadas dinámicamente desde Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PRÓXIMAMENTE ============ -->
+        <section id="proximamente" class="upcoming-section" aria-labelledby="proximamente-titulo">
+            <div class="upcoming-section__container">
+                <h2 id="proximamente-titulo" class="section-title">Próximamente</h2>
+                <div class="upcoming-section__grid" id="upcomingGrid">
+                    <article class="upcoming-card" aria-label="Evento próximo">
+                        <h3 class="upcoming-card__title">Ronda Clasificatoria</h3>
+                        <p class="upcoming-card__text">Inicio de las eliminatorias por categoría.</p>
+                    </article>
+                    <article class="upcoming-card" aria-label="Evento próximo">
+                        <h3 class="upcoming-card__title">Semifinales</h3>
+                        <p class="upcoming-card__text">Los mejores equipos se enfrentan por un lugar en la gran final.</p>
+                    </article>
+                    <article class="upcoming-card" aria-label="Evento próximo">
+                        <h3 class="upcoming-card__title">Gran Final</h3>
+                        <p class="upcoming-card__text">Premiación y cierre oficial del torneo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACTO ============ -->
+        <section id="contacto" class="contact-section" aria-labelledby="contacto-titulo">
+            <div class="contact-section__container">
+                <h2 id="contacto-titulo" class="section-title">Contacto</h2>
+                <p class="section-description">¿Tienes preguntas sobre el torneo? Escríbenos.</p>
+
+                <div class="contact-section__grid">
+                    <address class="contact-section__info" aria-label="Datos de contacto del torneo">
+                        <p><strong>Correo:</strong> <a href="mailto:torneo@colegio.edu.co">torneo@colegio.edu.co</a></p>
+                        <p><strong>Teléfono:</strong> <a href="tel:+573000000000">+57 300 000 0000</a></p>
+                        <p><strong>Dirección:</strong> Colegio Gimnasio Cervantes, Bogotá, Colombia</p>
+                    </address>
+
+                    <form id="contactForm" class="contact-form" aria-label="Formulario de contacto" novalidate>
+                        <div class="contact-form__field">
+                            <label for="contactName" class="contact-form__label">Nombre</label>
+                            <input type="text" id="contactName" name="contactName" class="contact-form__input" autocomplete="name" required>
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="contactEmail" class="contact-form__label">Correo electrónico</label>
+                            <input type="email" id="contactEmail" name="contactEmail" class="contact-form__input" autocomplete="email" required>
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="contactMessage" class="contact-form__label">Mensaje</label>
+                            <textarea id="contactMessage" name="contactMessage" class="contact-form__textarea" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary" aria-label="Enviar mensaje de contacto">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer id="footer" class="footer" role="contentinfo">
+        <div class="footer__container">
+            <div class="footer__brand">
+                <img src="assets/img/logo.svg" alt="Logotipo del Torneo Escolar de Carros Robots" class="footer__logo">
+                <p class="footer__tagline">Robótica, ingeniería y competencia escolar.</p>
+            </div>
+
+            <nav class="footer__links" aria-label="Enlaces del pie de página">
+                <a href="#hero" class="footer__link">Inicio</a>
+                <a href="#deportes" class="footer__link">Categorías</a>
+                <a href="#inscripcion" class="footer__link">Inscripción</a>
+                <a href="#clasificaciones" class="footer__link">Clasificaciones</a>
+                <a href="#contacto" class="footer__link">Contacto</a>
+            </nav>
+
+            <div class="footer__social" aria-label="Redes sociales del torneo">
+                <a href="#" class="footer__social-link" aria-label="Instagram del torneo">Instagram</a>
+                <a href="#" class="footer__social-link" aria-label="Facebook del torneo">Facebook</a>
+                <a href="#" class="footer__social-link" aria-label="YouTube del torneo">YouTube</a>
+            </div>
+
+            <p class="footer__copy">&copy; <span id="currentYear">2026</span> Torneo Escolar de Carros Robots. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/animations.js"></script>
+    <script type="module" src="js/model.js"></script>
+    <script type="module" src="js/sheets.js"></script>
+
+</body>
+</html>

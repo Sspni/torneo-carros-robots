@@ -1,0 +1,324 @@
+/* ==========================================================================
+   TORNEO ESCOLAR DE CARROS ROBOTS — animations.css
+   Animaciones y keyframes reutilizables del sistema "Liquid Glass".
+   Estructura del archivo:
+     1. Keyframes: Fade
+     2. Keyframes: Slide
+     3. Keyframes: Float
+     4. Keyframes: Glass Reflection
+     5. Keyframes: Reveal (scroll)
+     6. Clases de utilidad para aplicar animaciones
+     7. Hover / micro-interacciones
+     8. Preferencia de movimiento reducido
+   ========================================================================== */
+
+/* ==========================================================================
+   1. KEYFRAMES: FADE
+   ========================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   2. KEYFRAMES: SLIDE
+   ========================================================================== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   3. KEYFRAMES: FLOAT
+   Movimiento ambiental sutil, usado en elementos decorativos y el visor 3D.
+   ========================================================================== */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-14px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes floatSlow {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(1.5deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* ==========================================================================
+   4. KEYFRAMES: GLASS REFLECTION
+   Simula un reflejo de luz recorriendo una superficie de cristal.
+   ========================================================================== */
+@keyframes glassReflection {
+    0% {
+        transform: translateX(-120%) rotate(8deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        transform: translateX(120%) rotate(8deg);
+        opacity: 0;
+    }
+}
+
+@keyframes auroraShift {
+    0% {
+        background-position: 0% 0%, 100% 0%, 50% 100%;
+    }
+    50% {
+        background-position: 10% 10%, 90% 15%, 45% 90%;
+    }
+    100% {
+        background-position: 0% 0%, 100% 0%, 50% 100%;
+    }
+}
+
+/* ==========================================================================
+   5. KEYFRAMES: REVEAL (SCROLL)
+   Usadas por js/animations.js al agregar la clase ".is-visible"
+   mediante IntersectionObserver.
+   ========================================================================== */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes revealScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================================================
+   6. CLASES DE UTILIDAD PARA APLICAR ANIMACIONES
+   ========================================================================== */
+.anim-fade-in {
+    animation: fadeIn var(--duration-slow) var(--ease-glass) both;
+}
+
+.anim-slide-up {
+    animation: slideUp var(--duration-slow) var(--ease-glass) both;
+}
+
+.anim-slide-down {
+    animation: slideDown var(--duration-slow) var(--ease-glass) both;
+}
+
+.anim-slide-in-left {
+    animation: slideInLeft var(--duration-slow) var(--ease-glass) both;
+}
+
+.anim-slide-in-right {
+    animation: slideInRight var(--duration-slow) var(--ease-glass) both;
+}
+
+.anim-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.anim-float-slow {
+    animation: floatSlow 9s ease-in-out infinite;
+}
+
+/* Elemento de reflejo aplicado dentro de superficies con .glass-sheen */
+.glass-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 40%;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: glassReflection 7s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Fondo con aurora en movimiento lento, aplicado opcionalmente vía JS */
+.bg-aurora-animated {
+    background-size: 180% 180%;
+    animation: auroraShift 18s ease-in-out infinite;
+}
+
+/* Elementos preparados para revelarse al hacer scroll (estado inicial) */
+.reveal {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+    animation: revealUp var(--duration-slow) var(--ease-glass) both;
+}
+
+.reveal--scale.is-visible {
+    animation: revealScale var(--duration-slow) var(--ease-glass) both;
+}
+
+/* Retrasos escalonados para listas / grids que se revelan en cascada */
+.reveal--delay-1.is-visible { animation-delay: 0.08s; }
+.reveal--delay-2.is-visible { animation-delay: 0.16s; }
+.reveal--delay-3.is-visible { animation-delay: 0.24s; }
+.reveal--delay-4.is-visible { animation-delay: 0.32s; }
+
+/* ==========================================================================
+   7. HOVER / MICRO-INTERACCIONES
+   ========================================================================== */
+.hover-lift {
+    transition: transform var(--duration-base) var(--ease-glass),
+                box-shadow var(--duration-base) var(--ease-glass);
+}
+
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-floating);
+}
+
+.hover-glow {
+    transition: box-shadow var(--duration-base) var(--ease-glass);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 0 1px var(--glass-border-strong), 0 0 40px rgba(10, 132, 255, 0.35);
+}
+
+.hover-scale {
+    transition: transform var(--duration-fast) var(--ease-glass);
+}
+
+.hover-scale:hover {
+    transform: scale(1.03);
+}
+
+/* Navbar: transición suave al aplicar la clase de "scrolled" vía JS */
+.navbar {
+    transition: background var(--duration-base) var(--ease-glass),
+                border-color var(--duration-base) var(--ease-glass),
+                box-shadow var(--duration-base) var(--ease-glass);
+}
+
+.navbar.is-scrolled {
+    background: rgba(8, 8, 12, 0.65);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Menú móvil: apertura/cierre animados vía JS agregando/quitando .is-open */
+.navbar__menu {
+    transition: max-height var(--duration-base) var(--ease-glass),
+                opacity var(--duration-base) var(--ease-glass);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Paneles de tabs: transición de entrada al cambiar de categoría vía JS */
+.tab-panel {
+    animation: fadeIn var(--duration-base) var(--ease-glass) both;
+}
+
+/* ==========================================================================
+   8. PREFERENCIA DE MOVIMIENTO REDUCIDO
+   Respeta la configuración de accesibilidad del sistema operativo.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .glass-sheen::after {
+        display: none;
+    }
+}
