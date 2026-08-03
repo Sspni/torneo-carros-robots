@@ -26,7 +26,7 @@
    ========================================================================== */
 const SHEETS_CONFIG = {
     // ÚNICO valor que se debe cambiar para apuntar a otro Google Sheet.
-    SPREADSHEET_ID: 'REEMPLAZAR_CON_TU_SPREADSHEET_ID',
+    SPREADSHEET_ID: '1JALgkuHRRRYfEShazRuEDMNmE60N__izr_gT8kyONQQ',
 
     // Nombre exacto de la pestaña (hoja) dentro del Google Sheet para cada categoría.
     SHEET_NAMES: {
