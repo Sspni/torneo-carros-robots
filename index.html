@@ -246,24 +246,117 @@
             </div>
         </section>
 
-        <!-- ============ CLASIFICACIONES ============ -->
+       <!-- ============ CLASIFICACIONES ============ -->
         <section id="clasificaciones" class="standings-section" aria-labelledby="clasificaciones-titulo">
             <div class="standings-section__container">
                 <h2 id="clasificaciones-titulo" class="section-title">Clasificaciones</h2>
                 <p class="section-description">Resultados actualizados en tiempo real desde Google Sheets.</p>
 
                 <div class="standings-section__table-wrapper">
-                    <table id="standingsTable" class="standings-table" aria-label="Tabla de clasificaciones del torneo">
-                        <caption class="sr-only">Clasificación general de equipos por categoría</caption>
+                    <table id="standingsTableSumo" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Sumo">
+                        <caption class="sr-only">Clasificación de la categoría Sumo</caption>
                         <thead>
                             <tr>
                                 <th scope="col">Posición</th>
                                 <th scope="col">Equipo</th>
-                                <th scope="col">Categoría</th>
+                                <th scope="col">Colegio</th>
+                                <th scope="col">Victorias</th>
+                                <th scope="col">Empates</th>
+                                <th scope="col">Derrotas</th>
                                 <th scope="col">Puntos</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Observaciones</th>
                             </tr>
                         </thead>
-                        <tbody id="standingsTableBody">
+                        <tbody id="standingsSumo">
+                            <!-- Filas generadas dinámicamente desde Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="standings-section__table-wrapper">
+                    <table id="standingsTableSoccer" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Soccer">
+                        <caption class="sr-only">Clasificación de la categoría Soccer</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Colegio</th>
+                                <th scope="col">Victorias</th>
+                                <th scope="col">Empates</th>
+                                <th scope="col">Derrotas</th>
+                                <th scope="col">Puntos</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsSoccer">
+                            <!-- Filas generadas dinámicamente desde Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="standings-section__table-wrapper">
+                    <table id="standingsTableAmericano" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Fútbol Americano">
+                        <caption class="sr-only">Clasificación de la categoría Fútbol Americano</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Colegio</th>
+                                <th scope="col">Victorias</th>
+                                <th scope="col">Empates</th>
+                                <th scope="col">Derrotas</th>
+                                <th scope="col">Puntos</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsAmericano">
+                            <!-- Filas generadas dinámicamente desde Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="standings-section__table-wrapper">
+                    <table id="standingsTable40M" class="standings-table" aria-label="Tabla de clasificaciones de la categoría 40 Metros">
+                        <caption class="sr-only">Clasificación de la categoría 40 Metros</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Colegio</th>
+                                <th scope="col">Victorias</th>
+                                <th scope="col">Empates</th>
+                                <th scope="col">Derrotas</th>
+                                <th scope="col">Puntos</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standings40M">
+                            <!-- Filas generadas dinámicamente desde Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="standings-section__table-wrapper">
+                    <table id="standingsTableLaberinto" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Laberinto">
+                        <caption class="sr-only">Clasificación de la categoría Laberinto</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Colegio</th>
+                                <th scope="col">Victorias</th>
+                                <th scope="col">Empates</th>
+                                <th scope="col">Derrotas</th>
+                                <th scope="col">Puntos</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsLaberinto">
                             <!-- Filas generadas dinámicamente desde Google Sheets -->
                         </tbody>
                     </table>
