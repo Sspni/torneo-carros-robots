@@ -82,8 +82,8 @@ const SHEETS_CONFIG = {
         DRAWS: 6,          // G = Empates
         LOSSES: 7,         // H = Derrotas
         POINTS: 8,         // I = Puntos
-        TIME: 9,           // J = Tiempo
-        OBSERVATIONS: 10,  // K = Observaciones
+        TIME: 23,           // J = Tiempo
+        OBSERVATIONS: 22,  // K = Observaciones
     },
 };
 
@@ -206,9 +206,9 @@ function mapRowsToStandings(table) {
     const idx = SHEETS_CONFIG.COLUMN_INDEX;
 
     return table.rows
-    .slice(1)
     .map((row) => {
             const cells = row.c || [];
+            console.log("Celdas:", cells);
 
             const team = toSafeText(cells[idx.TEAM]);
             const school = toSafeText(cells[idx.SCHOOL]);
@@ -283,7 +283,21 @@ async function fetchCategoryStandings(sheetKey) {
     try {
         const rawText = await fetchRawSheet(sheetName);
         const table = parseGvizResponse(rawText);
+         console.log("Categoría:", sheetName);
+         console.log(table.rows);
+
+         console.log("Filas completas:");
+         table.rows.forEach((row, index) => {
+         console.log("Fila", index, row);
+        });
+
         const rawStandings = mapRowsToStandings(table);
+
+         console.log("Equipos procesados:");
+         console.log(rawStandings);
+         console.log(table.rows);
+
+         console.log(rawStandings);
         const sorted = sortStandings(rawStandings);
         return assignPositions(sorted);
     } catch (error) {
