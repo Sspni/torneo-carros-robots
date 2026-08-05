@@ -289,3 +289,146 @@ justify-content:center;
 }
 
 }
+/* =====================================================
+   RESPONSIVE - TABLETS
+===================================================== */
+
+@media (max-width: 992px) {
+
+    .hero__container,
+    .info-section__container,
+    .sports-section__container,
+    .registration-section__container,
+    .standings-section__container,
+    .upcoming-section__container,
+    .contact-section__container,
+    .school-section__container,
+    .footer__container{
+        width: min(92%,1200px);
+    }
+
+    .hero__title{
+        font-size:3rem;
+    }
+
+}/* =====================================================
+   RESPONSIVE - CELULARES
+===================================================== */
+
+@media (max-width:768px){
+
+    /* HERO */
+
+    .hero{
+        padding:120px 20px 80px;
+        text-align:center;
+    }
+
+    .hero__title{
+        font-size:2.3rem;
+        line-height:1.1;
+    }
+
+    .hero__subtitle{
+        font-size:1rem;
+    }
+
+    .hero__actions{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero__actions .btn{
+        width:100%;
+    }
+
+    /* GRID GENERAL */
+
+    .info-section__grid,
+    .upcoming-section__grid,
+    .contact-section__grid,
+    .school-section__grid{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    /* CATEGORIAS */
+
+    .tabs{
+        overflow-x:auto;
+        white-space:nowrap;
+        justify-content:flex-start;
+        padding-bottom:10px;
+    }
+
+    .tabs::-webkit-scrollbar{
+        display:none;
+    }
+
+    .tabs__button{
+        flex:0 0 auto;
+    }
+
+    /* TABLAS */
+
+    .standings-section__table-wrapper{
+        overflow-x:auto;
+    }
+
+    .standings-table{
+        min-width:900px;
+    }
+
+    /* MODELO */
+
+    .model-viewer{
+        height:320px;
+    }
+
+    /* INFORMACIÓN COLEGIO */
+
+    .school-card{
+        text-align:center;
+    }
+
+    .school-card img{
+        width:140px;
+        margin:auto;
+        display:block;
+    }
+
+    /* CONTACTO */
+
+    .contact-form{
+        width:100%;
+    }
+
+    .contact-form__input,
+    .contact-form__textarea{
+        width:100%;
+    }
+
+    /* FOOTER */
+
+    .footer__container{
+        text-align:center;
+    }
+
+    .footer__top{
+        display:flex;
+        flex-direction:column;
+        gap:35px;
+    }
+
+    .footer__links{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .footer__social{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+}

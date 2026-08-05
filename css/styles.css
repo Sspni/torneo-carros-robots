@@ -635,6 +635,13 @@ h3 {
 /* ==========================================================================
    10. INSCRIPCIÓN
    ========================================================================== */
+   .google-form{
+    width:100%;
+    min-height:1750px;
+    border:0;
+    border-radius:20px;
+    background:#fff;
+}
 .registration-section {
     padding-block: var(--space-8);
 }
@@ -853,7 +860,7 @@ h3 {
 }
 
 .footer__logo {
-    width: 26px;
+    width: 500px;
     height: 26px;
 }
 
@@ -1016,7 +1023,7 @@ COLEGIO
 
     background:white;
 
-    border-radius:30px;
+    border-radius:500px;
 
     box-shadow:0 25px 70px rgba(0,0,0,.35);
 
@@ -1072,6 +1079,9 @@ FOOTER
     width:90px;
 
     margin-bottom:20px;
+    
+  border-radius:500px;
+
 
 }
 
@@ -1081,7 +1091,7 @@ FOOTER
 
     padding:10px;
 
-    border-radius:18px;
+    border-radius:500px;
 
     background:white;
 
