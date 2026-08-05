@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512"
+     fill="none">
+
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5EE7FF"/>
+            <stop offset="100%" stop-color="#7C5CFF"/>
+        </linearGradient>
+
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Hexágono -->
+    <polygon
+        points="256,48 412,136 412,312 256,400 100,312 100,136"
+        stroke="url(#grad)"
+        stroke-width="18"
+        fill="rgba(255,255,255,0.02)"
+        filter="url(#glow)"/>
+
+    <!-- Circuitos -->
+    <line x1="180" y1="170" x2="332" y2="170"
+          stroke="url(#grad)"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <line x1="180" y1="256" x2="332" y2="256"
+          stroke="url(#grad)"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <line x1="180" y1="342" x2="332" y2="342"
+          stroke="url(#grad)"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <!-- Nodos -->
+    <circle cx="180" cy="170" r="10" fill="#5EE7FF"/>
+    <circle cx="332" cy="170" r="10" fill="#7C5CFF"/>
+
+    <circle cx="180" cy="256" r="10" fill="#5EE7FF"/>
+    <circle cx="332" cy="256" r="10" fill="#7C5CFF"/>
+
+    <circle cx="180" cy="342" r="10" fill="#5EE7FF"/>
+    <circle cx="332" cy="342" r="10" fill="#7C5CFF"/>
+
+    <!-- R -->
+    <path
+        d="
+        M215 145
+        L215 365
+
+        M215 145
+        H285
+
+        Q340 145 340 205
+        Q340 265 285 265
+
+        H215
+
+        L335 365
+        "
+        stroke="white"
+        stroke-width="18"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+</svg>
