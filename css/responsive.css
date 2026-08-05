@@ -432,3 +432,95 @@ justify-content:center;
     }
 
 }
+/* ==========================================================
+   COLEGIO ORGANIZADOR - RESPONSIVE
+========================================================== */
+
+@media (max-width: 992px) {
+
+    .school-section__content{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align:center;
+    }
+
+    .school-section__logo{
+        max-width:220px;
+        margin:0 auto;
+    }
+
+    .school-section__info{
+        text-align:center;
+    }
+
+    .school-section__social{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .school-section{
+        padding:70px 20px;
+    }
+
+    .school-section__title{
+        font-size:2rem;
+    }
+
+    .school-section__description{
+        font-size:1rem;
+        line-height:1.7;
+    }
+
+    .school-section__logo{
+        width:170px;
+    }
+
+    .school-section__social{
+        gap:14px;
+    }
+
+    .school-section__social a{
+        width:50px;
+        height:50px;
+        font-size:20px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .school-section{
+        padding:55px 15px;
+    }
+
+    .school-section__content{
+        gap:1.5rem;
+    }
+
+    .school-section__title{
+        font-size:1.7rem;
+    }
+
+    .school-section__description{
+        font-size:.95rem;
+    }
+
+    .school-section__logo{
+        width:140px;
+    }
+
+    .school-section__social{
+        gap:12px;
+    }
+
+    .school-section__social a{
+        width:46px;
+        height:46px;
+        font-size:18px;
+    }
+
+}
