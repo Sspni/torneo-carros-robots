@@ -914,3 +914,315 @@ textarea:focus-visible {
     outline-offset: 3px;
     border-radius: var(--radius-xs);
 }
+/*==================================================
+COLEGIO
+==================================================*/
+
+.school-section{
+
+    padding:120px 8%;
+    background:linear-gradient(180deg,#081323,#0d1728);
+
+}
+
+.school-container{
+
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+
+    gap:80px;
+    align-items:center;
+
+}
+
+.school-badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:#17365d;
+
+    color:#7ec8ff;
+
+    font-size:.9rem;
+
+    margin-bottom:20px;
+
+}
+
+.school-data{
+
+    display:grid;
+
+    gap:18px;
+
+    margin:40px 0;
+
+}
+
+.school-item{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:flex-start;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.school-item strong{
+
+    display:block;
+
+    margin-bottom:5px;
+
+}
+
+.school-item span{
+
+    opacity:.8;
+
+}
+
+.school-right{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.school-logo{
+
+    width:320px;
+
+    max-width:100%;
+
+    padding:35px;
+
+    background:white;
+
+    border-radius:30px;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+}
+
+.school-logo:hover{
+
+    transform:translateY(-8px);
+
+}
+/*==================================================
+FOOTER
+==================================================*/
+
+.footer{
+
+    background:#07101d;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    margin-top:120px;
+
+}
+
+.footer__container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:70px 8%;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:50px;
+
+}
+
+.footer__column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.footer__logo{
+
+    width:90px;
+
+    margin-bottom:20px;
+
+}
+
+.footer__school-logo{
+
+    width:95px;
+
+    padding:10px;
+
+    border-radius:18px;
+
+    background:white;
+
+    margin-bottom:20px;
+
+}
+
+.footer__column h3{
+
+    color:#ffffff;
+
+    margin-bottom:20px;
+
+    font-size:1.2rem;
+
+}
+
+.footer__column p{
+
+    color:#c3d0df;
+
+    line-height:1.8;
+
+}
+
+.footer__column a{
+
+    color:#c3d0df;
+
+    text-decoration:none;
+
+    margin-bottom:12px;
+
+    transition:.3s;
+
+}
+
+.footer__column a:hover{
+
+    color:#4da3ff;
+
+    transform:translateX(4px);
+
+}
+
+.footer__social{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:30px;
+
+}
+
+.footer__social a{
+
+    width:50px;
+
+    height:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    color:white;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+}
+
+.footer__social a:hover{
+
+    background:#1e5eff;
+
+    color:white;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 30px rgba(30,94,255,.35);
+
+}
+
+.footer__contact{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.footer__contact p{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#c3d0df;
+
+    margin:0;
+
+}
+
+.footer__contact i{
+
+    color:#4da3ff;
+
+    width:20px;
+
+    text-align:center;
+
+}
+
+.footer__bottom{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+.footer__bottom p{
+
+    color:#9db2c7;
+
+    font-size:.95rem;
+
+    margin:0;
+
+}

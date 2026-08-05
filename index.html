@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
@@ -43,6 +44,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
@@ -159,25 +161,47 @@
                     <!-- SUMO -->
                     <article id="sumo" class="tab-panel" role="tabpanel" aria-labelledby="tab-sumo" tabindex="0">
                         <div id="panel-sumo" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Sumo</h3>
-                            <p class="tab-panel__text">Dos robots se enfrentan dentro de un ring circular. Gana quien saque al oponente del área de combate.</p>
+                            <h3 class="tab-panel__title">Reglas Sumo</h3>
+                            <p class="tab-panel__text">Dos robots autónomos compiten dentro de un dojo circular. El objetivo es empujar completamente al robot rival fuera del área de combate o hacer que pierda movilidad.</p>
                             <ul class="tab-panel__list" aria-label="Reglas rápidas de Sumo">
                                 <li>Peso máximo: 1 kg</li>
                                 <li>Dimensiones máximas: 20 x 20 cm</li>
                                 <li>Duración del combate: 3 minutos</li>
+                                <h3 class="tab-panel__title">Desarrollo del combate</h3>
+                                <li>Combate entre dos robots.</li>
+                                <li>Se juega al mejor de 3 rondas </li>
+                                <li>Cada ronda tiene un tiempo maximo</li>
+                                <li>Gana quien consiga 2 victorias o mas puntos </li>
+                                <h3 class="tab-panel__title">Penalizaciones</h3>
+                                <li>Salir voluntariamente del dojo </li>
+                                <li>Separa partes del robot</li>
+                                <li>Manipular el robot durante el combate</li>
+                                <li>Retrasar el inicio del enfrentamiento</li>
+                                <li>Uso de elementos peligrosos</li>    
                             </ul>
+                            
                         </div>
+                        
                     </article>
 
                     <!-- SOCCER -->
                     <article id="soccer" class="tab-panel" role="tabpanel" aria-labelledby="tab-soccer" tabindex="0" hidden>
                         <div id="panel-soccer" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Soccer</h3>
+                            <h3 class="tab-panel__title">Reglas Soccer</h3>
                             <p class="tab-panel__text">Equipos de robots compiten para anotar goles en una cancha reducida usando control remoto o autonomía.</p>
+                            <h3 class="tab-panel__title">Partido</h3>
                             <ul class="tab-panel__list" aria-label="Reglas rápidas de Soccer">
                                 <li>Equipos de 2 robots</li>
                                 <li>Duración: 2 tiempos de 5 minutos</li>
-                                <li>Balón infrarrojo reglamentario</li>
+                                <li>Gana quien marque mas goles </li>
+                                <li>Cambio de lado al descanso</li>
+                                <li>En empate puede existir definición según el reglamento del torneo.</li>
+                                <h3 class="tab-panel__title">Penalizaciones</h3>
+                                <li>Sujetar permanentemente la pelota </li>
+                                <li>Golpear intencionalmente a otros robots </li>
+                                <li>Bloquear completamente el arco </li>
+                                <li>Manipular robots durante el juego</li>
+
                             </ul>
                         </div>
                     </article>
@@ -190,7 +214,16 @@
                             <ul class="tab-panel__list" aria-label="Reglas rápidas de Fútbol Americano">
                                 <li>Campo de 3 metros de largo</li>
                                 <li>Contacto controlado permitido</li>
-                                <li>Anotación por zona final</li>
+                                <li>Control remoto</li>
+                                <h3 class="tab-panel__title">Anotacion</h3>
+                                <li>Touchdown</li>
+                                <li>Intercepcion</li>
+                                <li>Reinicio desde el centro</li>
+                                <h3 class="tab-panel__title">Prohibiciones</h3>
+                                <li>Sujetar permanentemente el balon</li>
+                                <li>Destruir robots</li>
+                                <li>Bloquear completamente el campo</li>
+
                             </ul>
                         </div>
                     </article>
@@ -385,6 +418,83 @@
             </div>
         </section>
 
+        <!-- ============ COLEGIO ORGANIZADOR ============ -->
+<section id="colegio" class="school-section" aria-labelledby="school-title">
+
+    <div class="school-container">
+
+        <div class="school-left">
+
+            <span class="school-badge">
+                Institución Organizadora
+            </span>
+
+            <h2 id="school-title" class="section-title">
+                Gimnasio Cervantes
+            </h2>
+
+            <p class="section-description">
+
+                El Gimnasio Cervantes es la institución organizadora del
+                Torneo Escolar de Carros Robots. Nuestro objetivo es fomentar
+                la creatividad, la innovación, la ingeniería y el trabajo en
+                equipo mediante experiencias que acercan a los estudiantes al
+                mundo de la ciencia y la tecnología.
+
+            </p>
+
+            <div class="school-data">
+
+                <div class="school-item">
+                    📍
+                    <div>
+                        <strong>Dirección</strong>
+                        <span>Facatativá, Cundinamarca</span>
+                    </div>
+                </div>
+
+                <div class="school-item">
+                    📞
+                    <div>
+                        <strong>Teléfono</strong>
+                        <span>(601) 8437511</span>
+                    </div>
+                </div>
+
+                <div class="school-item">
+                    ✉️
+                    <div>
+                        <strong>Correo</strong>
+                        <span>colegiogimnasiocervantes@hotmail.com</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <a
+                class="btn btn--primary"
+                href="https://www.gimnasiocervantesfaca.edu.co/"
+                target="_blank">
+
+                Conocer el colegio
+
+            </a>
+
+        </div>
+
+        <div class="school-right">
+
+            <img
+                src="assets/img/gimnasio-cervantes.png"
+                alt="Logo Gimnasio Cervantes"
+                class="school-logo">
+
+        </div>
+
+    </div>
+
+</section>
+
         <!-- ============ CONTACTO ============ -->
         <section id="contacto" class="contact-section" aria-labelledby="contacto-titulo">
             <div class="contact-section__container">
@@ -393,9 +503,9 @@
 
                 <div class="contact-section__grid">
                     <address class="contact-section__info" aria-label="Datos de contacto del torneo">
-                        <p><strong>Correo:</strong> <a href="mailto:torneo@colegio.edu.co">torneo@colegio.edu.co</a></p>
-                        <p><strong>Teléfono:</strong> <a href="tel:+573000000000">+57 300 000 0000</a></p>
-                        <p><strong>Dirección:</strong> Colegio Gimnasio Cervantes, Bogotá, Colombia</p>
+                        <p><strong>Correo:</strong> <a href="mailto:colegiogimnasiocervantes@hotmail.com ">colegiogimnasiocervantes@hotmail.com </a></p>
+                        <p><strong>Teléfono:</strong> <a href="tel:+57312 527 47 11">+57 312 527 47 11</a></p>
+                        <p><strong>Dirección:</strong> Cll 9 No. 6 -71 Facatativá </p>
                     </address>
 
                     <form id="contactForm" class="contact-form" aria-label="Formulario de contacto" novalidate>
@@ -420,31 +530,147 @@
     </main>
 
     <!-- ============ FOOTER ============ -->
-    <footer id="footer" class="footer" role="contentinfo">
-        <div class="footer__container">
-            <div class="footer__brand">
-                <img src="assets/img/logo.svg" alt="Logotipo del Torneo Escolar de Carros Robots" class="footer__logo">
-                <p class="footer__tagline">Robótica, ingeniería y competencia escolar.</p>
-            </div>
+<footer id="footer" class="footer">
 
-            <nav class="footer__links" aria-label="Enlaces del pie de página">
-                <a href="#hero" class="footer__link">Inicio</a>
-                <a href="#deportes" class="footer__link">Categorías</a>
-                <a href="#inscripcion" class="footer__link">Inscripción</a>
-                <a href="#clasificaciones" class="footer__link">Clasificaciones</a>
-                <a href="#contacto" class="footer__link">Contacto</a>
-            </nav>
+    <div class="footer__container">
 
-            <div class="footer__social" aria-label="Redes sociales del torneo">
-                <a href="#" class="footer__social-link" aria-label="Instagram del torneo">Instagram</a>
-                <a href="#" class="footer__social-link" aria-label="Facebook del torneo">Facebook</a>
-                <a href="#" class="footer__social-link" aria-label="YouTube del torneo">YouTube</a>
-            </div>
+        <!-- Logo Torneo -->
+        <div class="footer__column">
 
-            <p class="footer__copy">&copy; <span id="currentYear">2026</span> Torneo Escolar de Carros Robots. Todos los derechos reservados.</p>
+            <img
+                src="assets/img/logo.svg"
+                alt="Logo Torneo Escolar de Carros Robots"
+                class="footer__logo">
+
+            <h3>Torneo Escolar de Carros Robots</h3>
+
+            <p>
+                Ciencia, tecnología e innovación para las nuevas generaciones.
+            </p>
+
         </div>
-    </footer>
 
+        <!-- Colegio -->
+        <div class="footer__column">
+
+            <img
+                src="assets/img/gimnasio-cervantes.png"
+                alt="Logo Gimnasio Cervantes"
+                class="footer__school-logo">
+
+            <h3>Institución Organizadora</h3>
+
+            <p>
+                Gimnasio Cervantes<br>
+                Facatativá - Cundinamarca
+            </p>
+
+        </div>
+
+        <!-- Enlaces -->
+        <div class="footer__column">
+
+            <h3>Navegación</h3>
+
+            <a href="#hero">Inicio</a>
+            <a href="#deportes">Categorías</a>
+            <a href="#inscripcion">Inscripción</a>
+            <a href="#clasificaciones">Clasificaciones</a>
+            <a href="#colegio">Colegio</a>
+            <a href="#contacto">Contacto</a>
+
+        </div>
+
+        <!-- Redes -->
+        <div class="footer__column">
+
+            <h3>Síguenos</h3>
+
+            <div class="footer__social">
+
+                <a
+                    href="https://www.facebook.com/people/Gimnasio-Cervantes/100076326573949/"
+                    target="_blank"
+                    aria-label="Facebook">
+
+                    <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+                <a
+                    href="https://www.instagram.com/cervantesgimnasio/"
+                    target="_blank"
+                    aria-label="Instagram">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                </a>
+
+                <a
+                    href="https://www.youtube.com/channel/UCRGGOBZ-H2oCc3MH9UlI4Dw"
+                    target="_blank"
+                    aria-label="YouTube">
+
+                    <i class="fa-brands fa-youtube"></i>
+
+                </a>
+
+                <a
+                    href="https://www.gimnasiocervantesfaca.edu.co/"
+                    target="_blank"
+                    aria-label="Página web">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                </a>
+
+            </div>
+
+            <div class="footer__contact">
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Facatativá, Colombia
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    (601) 8437511
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    colegiogimnasiocervantes@hotmail.com
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+
+        <p>
+
+            © <span id="currentYear">2026</span>
+            Torneo Escolar de Carros Robots ·
+            Organizado por el Gimnasio Cervantes.
+
+        </p>
+
+    </div>
+
+</footer>
     <!-- Scripts -->
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/animations.js"></script>
