@@ -8,8 +8,8 @@
      3. Construcción de la URL de cada hoja (gviz)
      4. Fetch y parseo de la respuesta de Google Sheets
      5. Normalización de filas a objetos de clasificación
-     6. Obtención combinada de las 5 categorías
-     7. Renderizado dinámico de la tabla
+     6. Obtención y ordenamiento por categoría (una hoja = una tabla)
+     7. Renderizado dinámico de cada tabla independiente
      8. Actualización automática periódica
      9. Inicialización general
    ========================================================================== */
@@ -37,7 +37,7 @@ const SHEETS_CONFIG = {
         LABERINTO: 'LABERINTO',
     },
 
-    // Etiquetas legibles mostradas en la columna "Categoría" de la tabla.
+    // Etiquetas legibles usadas únicamente en mensajes (estado vacío / error).
     CATEGORY_LABELS: {
         SUMO: 'Sumo',
         SOCCER: 'Soccer',
@@ -46,17 +46,44 @@ const SHEETS_CONFIG = {
         LABERINTO: 'Laberinto',
     },
 
+    // Cada categoría/hoja tiene su propia tabla independiente en el HTML.
+    // Mapea la clave interna de SHEET_NAMES con el id del <tbody> a llenar.
+    SHEET_TBODY_IDS: {
+        SUMO: 'standingsSumo',
+        SOCCER: 'standingsSoccer',
+        AMERICANO: 'standingsAmericano',
+        CUARENTA_M: 'standings40M',
+        LABERINTO: 'standingsLaberinto',
+    },
+
+    // Selector usado únicamente para verificar que la sección de
+    // Clasificaciones existe en la página antes de inicializar.
+    SECTION_SELECTOR: '#clasificaciones',
+
     // Intervalo de actualización automática de las clasificaciones (ms).
     REFRESH_INTERVAL_MS: 60000,
 
-    // Selectores del DOM donde se inyectan los resultados.
-    TABLE_BODY_SELECTOR: '#standingsTableBody',
-    TABLE_WRAPPER_SELECTOR: '.standings-section__table-wrapper',
+    // Cantidad de columnas visibles en cada tabla (usada para colSpan de
+    // los mensajes de estado vacío/error): Posición, Equipo, Colegio,
+    // Victorias, Empates, Derrotas, Puntos, Tiempo, Observaciones.
+    VISIBLE_COLUMNS: 9,
 
-    // Columnas esperadas en cada hoja, en este orden: Equipo | Puntos.
+    // Columnas reales de cada hoja de categoría (SUMO, SOCCER, AMERICANO,
+    // 40M, LABERINTO), en el orden exacto A → K.
+    // Únicamente se leen las columnas necesarias para la tabla; ID, Capitán
+    // y Estado se ignoran intencionalmente.
     COLUMN_INDEX: {
-        TEAM: 0,
-        POINTS: 1,
+        // A = ID        -> ignorada
+        TEAM: 1,           // B = Equipo
+        SCHOOL: 2,         // C = Colegio
+        // D = Capitán   -> ignorada
+        // E = Estado    -> ignorada
+        WINS: 5,           // F = Victorias
+        DRAWS: 6,          // G = Empates
+        LOSSES: 7,         // H = Derrotas
+        POINTS: 8,         // I = Puntos
+        TIME: 9,           // J = Tiempo
+        OBSERVATIONS: 10,  // K = Observaciones
     },
 };
 
@@ -75,6 +102,31 @@ function qs(selector, context = document) {
 function toSafeNumber(value) {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : 0;
+}
+
+/**
+ * Convierte un valor de celda de Google Sheets a texto seguro, recortando
+ * espacios y devolviendo cadena vacía si la celda no existe o es nula.
+ * @param {*} cell
+ * @returns {string}
+ */
+function toSafeText(cell) {
+    return cell && cell.v !== null && cell.v !== undefined ? String(cell.v).trim() : '';
+}
+
+/**
+ * Convierte el texto de la columna "Tiempo" en un número comparable para
+ * ordenar. Acepta valores con coma decimal (ej. "12,34") o vacíos.
+ * Si el valor no es interpretable como número, devuelve Infinity para que
+ * ese equipo quede al final del desempate por tiempo.
+ * @param {string} timeText
+ * @returns {number}
+ */
+function toComparableTime(timeText) {
+    if (!timeText) return Infinity;
+    const normalized = timeText.replace(',', '.');
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : Infinity;
 }
 
 /* ==========================================================================
@@ -138,36 +190,91 @@ function parseGvizResponse(rawText) {
    ========================================================================== */
 
 /**
- * Convierte las filas crudas de una hoja en objetos { team, points, category }.
+ * Convierte las filas crudas de una hoja en objetos de clasificación,
+ * leyendo únicamente las columnas necesarias (Equipo, Colegio, Victorias,
+ * Empates, Derrotas, Puntos, Tiempo, Observaciones).
  * @param {object} table - Tabla en formato Google Charts ({ rows: [...] }).
- * @param {string} categoryLabel - Etiqueta legible de la categoría/deporte.
- * @returns {Array<{team: string, points: number, category: string}>}
+ * @returns {Array<{
+ *   team: string, school: string, wins: number, draws: number,
+ *   losses: number, points: number, time: string, timeValue: number,
+ *   observations: string
+ * }>}
  */
-function mapRowsToStandings(table, categoryLabel) {
+function mapRowsToStandings(table) {
     if (!table || !Array.isArray(table.rows)) return [];
 
+    const idx = SHEETS_CONFIG.COLUMN_INDEX;
+
     return table.rows
-        .map((row) => {
+    .slice(1)
+    .map((row) => {
             const cells = row.c || [];
-            const teamCell = cells[SHEETS_CONFIG.COLUMN_INDEX.TEAM];
-            const pointsCell = cells[SHEETS_CONFIG.COLUMN_INDEX.POINTS];
 
-            const team = teamCell && teamCell.v !== null ? String(teamCell.v).trim() : '';
-            const points = pointsCell ? toSafeNumber(pointsCell.v) : 0;
+            const team = toSafeText(cells[idx.TEAM]);
+            const school = toSafeText(cells[idx.SCHOOL]);
+            const wins = toSafeNumber(cells[idx.WINS] && cells[idx.WINS].v);
+            const draws = toSafeNumber(cells[idx.DRAWS] && cells[idx.DRAWS].v);
+            const losses = toSafeNumber(cells[idx.LOSSES] && cells[idx.LOSSES].v);
+            const points = toSafeNumber(cells[idx.POINTS] && cells[idx.POINTS].v);
+            const time = toSafeText(cells[idx.TIME]);
+            const observations = toSafeText(cells[idx.OBSERVATIONS]);
 
-            return { team, points, category: categoryLabel };
+            return {
+                team,
+                school,
+                wins,
+                draws,
+                losses,
+                points,
+                time,
+                timeValue: toComparableTime(time),
+                observations,
+            };
         })
         .filter((entry) => entry.team !== ''); // Descarta filas vacías o de encabezado repetido.
 }
 
+/**
+ * Ordena una lista de equipos de una misma categoría según las reglas del
+ * torneo:
+ *   1) Mayor cantidad de puntos.
+ *   2) Si empatan en puntos, menor tiempo.
+ *   3) Si siguen empatados, orden alfabético por nombre de equipo.
+ * @param {Array} standings
+ * @returns {Array} Lista ordenada (nuevo arreglo, no muta el original).
+ */
+function sortStandings(standings) {
+    return [...standings].sort((a, b) => {
+        if (b.points !== a.points) return b.points - a.points;
+        if (a.timeValue !== b.timeValue) return a.timeValue - b.timeValue;
+        return a.team.localeCompare(b.team, 'es', { sensitivity: 'base' });
+    });
+}
+
+/**
+ * Asigna la posición (#1, #2, #3...) a cada equipo según el orden recibido.
+ * @param {Array} sortedStandings
+ * @returns {Array}
+ */
+function assignPositions(sortedStandings) {
+    return sortedStandings.map((entry, index) => ({
+        position: index + 1,
+        ...entry,
+    }));
+}
+
 /* ==========================================================================
-   6. OBTENCIÓN COMBINADA DE LAS 5 CATEGORÍAS
+   6. OBTENCIÓN Y ORDENAMIENTO POR CATEGORÍA
+   Cada hoja se descarga, normaliza y ordena de forma independiente: no
+   existe una tabla general combinada.
    ========================================================================== */
 
 /**
- * Descarga y normaliza los datos de una sola categoría/deporte.
+ * Descarga, normaliza y ordena la clasificación de una sola categoría.
+ * Si la hoja está vacía o falla la descarga, devuelve un arreglo vacío
+ * sin interrumpir el resto de categorías.
  * @param {string} sheetKey - Clave interna definida en SHEET_NAMES (ej. "SUMO").
- * @returns {Promise<Array>} Clasificación normalizada de esa categoría.
+ * @returns {Promise<Array>} Clasificación ordenada y con posición asignada.
  */
 async function fetchCategoryStandings(sheetKey) {
     const sheetName = SHEETS_CONFIG.SHEET_NAMES[sheetKey];
@@ -176,43 +283,25 @@ async function fetchCategoryStandings(sheetKey) {
     try {
         const rawText = await fetchRawSheet(sheetName);
         const table = parseGvizResponse(rawText);
-        return mapRowsToStandings(table, categoryLabel);
+        const rawStandings = mapRowsToStandings(table);
+        const sorted = sortStandings(rawStandings);
+        return assignPositions(sorted);
     } catch (error) {
         console.error(`[sheets.js] Error al leer la categoría "${categoryLabel}":`, error.message);
-        return [];
+        throw error; // Se relanza para que el llamador distinga "vacío" de "error".
     }
 }
 
-/**
- * Descarga en paralelo las 5 hojas del torneo y las combina en una sola lista,
- * ordenada por puntos de mayor a menor, con la posición ya asignada.
- * @returns {Promise<Array<{position: number, team: string, category: string, points: number}>>}
- */
-async function fetchAllStandings() {
-    const sheetKeys = Object.keys(SHEETS_CONFIG.SHEET_NAMES);
-
-    const resultsByCategory = await Promise.all(
-        sheetKeys.map((sheetKey) => fetchCategoryStandings(sheetKey))
-    );
-
-    const combined = resultsByCategory.flat();
-
-    combined.sort((a, b) => b.points - a.points);
-
-    return combined.map((entry, index) => ({
-        position: index + 1,
-        ...entry,
-    }));
-}
-
 /* ==========================================================================
-   7. RENDERIZADO DINÁMICO DE LA TABLA
+   7. RENDERIZADO DINÁMICO DE CADA TABLA INDEPENDIENTE
    ========================================================================== */
 
 /**
  * Construye una fila <tr> de la tabla de clasificaciones a partir de un
- * objeto de resultado normalizado.
- * @param {{position: number, team: string, category: string, points: number}} entry
+ * objeto de resultado normalizado y ordenado.
+ * @param {{position: number, team: string, school: string, wins: number,
+ *   draws: number, losses: number, points: number, time: string,
+ *   observations: string}} entry
  * @returns {HTMLTableRowElement}
  */
 function createStandingsRow(entry) {
@@ -224,57 +313,107 @@ function createStandingsRow(entry) {
     const teamCell = document.createElement('td');
     teamCell.textContent = entry.team;
 
-    const categoryCell = document.createElement('td');
-    categoryCell.textContent = entry.category;
+    const schoolCell = document.createElement('td');
+    schoolCell.textContent = entry.school;
+
+    const winsCell = document.createElement('td');
+    winsCell.textContent = String(entry.wins);
+
+    const drawsCell = document.createElement('td');
+    drawsCell.textContent = String(entry.draws);
+
+    const lossesCell = document.createElement('td');
+    lossesCell.textContent = String(entry.losses);
 
     const pointsCell = document.createElement('td');
     pointsCell.textContent = String(entry.points);
 
-    row.append(positionCell, teamCell, categoryCell, pointsCell);
+    const timeCell = document.createElement('td');
+    timeCell.textContent = entry.time;
+
+    const observationsCell = document.createElement('td');
+    observationsCell.textContent = entry.observations;
+
+    row.append(
+        positionCell,
+        teamCell,
+        schoolCell,
+        winsCell,
+        drawsCell,
+        lossesCell,
+        pointsCell,
+        timeCell,
+        observationsCell
+    );
+
     return row;
 }
 
 /**
- * Reemplaza el contenido del <tbody> con las filas de clasificación dadas.
- * @param {Array} standings
+ * Muestra un mensaje de estado (una sola fila con colSpan completo) dentro
+ * del <tbody> indicado. Se reutiliza tanto para "sin equipos" como para
+ * errores de conexión.
+ * @param {HTMLElement} tableBody
+ * @param {string} message
+ * @param {string} [modifierClass] - Clase opcional para dar estilo elegante
+ *   al mensaje (ej. "standings-table__status--empty" o "...--error").
  */
-function renderStandingsTable(standings) {
-    const tableBody = qs(SHEETS_CONFIG.TABLE_BODY_SELECTOR);
-    if (!tableBody) return;
-
+function renderStatusRow(tableBody, message, modifierClass) {
     tableBody.replaceChildren();
 
+    const statusRow = document.createElement('tr');
+    const statusCell = document.createElement('td');
+    statusCell.colSpan = SHEETS_CONFIG.VISIBLE_COLUMNS;
+    statusCell.textContent = message;
+    statusCell.className = 'standings-table__status' + (modifierClass ? ` ${modifierClass}` : '');
+    statusRow.appendChild(statusCell);
+    tableBody.appendChild(statusRow);
+}
+
+/**
+ * Renderiza la clasificación ya ordenada de una categoría en su <tbody>
+ * correspondiente. Si no hay equipos registrados, muestra un mensaje
+ * elegante en lugar de una tabla vacía.
+ * @param {string} sheetKey
+ * @param {Array} standings
+ */
+function renderCategoryTable(sheetKey, standings) {
+    const tbodyId = SHEETS_CONFIG.SHEET_TBODY_IDS[sheetKey];
+    const tableBody = document.getElementById(tbodyId);
+    if (!tableBody) return;
+
     if (!standings.length) {
-        const emptyRow = document.createElement('tr');
-        const emptyCell = document.createElement('td');
-        emptyCell.colSpan = 4;
-        emptyCell.textContent = 'Las clasificaciones se publicarán próximamente.';
-        emptyRow.appendChild(emptyCell);
-        tableBody.appendChild(emptyRow);
+        const categoryLabel = SHEETS_CONFIG.CATEGORY_LABELS[sheetKey];
+        renderStatusRow(
+            tableBody,
+            `Aún no hay equipos registrados en ${categoryLabel}.`,
+            'standings-table__status--empty'
+        );
         return;
     }
 
+    tableBody.replaceChildren();
     const fragment = document.createDocumentFragment();
     standings.forEach((entry) => fragment.appendChild(createStandingsRow(entry)));
     tableBody.appendChild(fragment);
 }
 
 /**
- * Muestra un estado de error accesible dentro de la tabla si la carga falla
- * por completo (por ejemplo, sin conexión a internet).
+ * Muestra un estado de error accesible dentro del <tbody> de una categoría
+ * cuando su hoja no pudo descargarse (por ejemplo, sin conexión a internet).
+ * El resto de categorías sigue actualizándose con normalidad.
+ * @param {string} sheetKey
  */
-function renderStandingsError() {
-    const tableBody = qs(SHEETS_CONFIG.TABLE_BODY_SELECTOR);
+function renderCategoryError(sheetKey) {
+    const tbodyId = SHEETS_CONFIG.SHEET_TBODY_IDS[sheetKey];
+    const tableBody = document.getElementById(tbodyId);
     if (!tableBody) return;
 
-    tableBody.replaceChildren();
-
-    const errorRow = document.createElement('tr');
-    const errorCell = document.createElement('td');
-    errorCell.colSpan = 4;
-    errorCell.textContent = 'No se pudieron cargar las clasificaciones. Intentando de nuevo automáticamente…';
-    errorRow.appendChild(errorCell);
-    tableBody.appendChild(errorRow);
+    renderStatusRow(
+        tableBody,
+        'No se pudo cargar esta categoría. Intentando de nuevo automáticamente…',
+        'standings-table__status--error'
+    );
 }
 
 /* ==========================================================================
@@ -282,34 +421,43 @@ function renderStandingsError() {
    ========================================================================== */
 
 /**
- * Ejecuta una carga completa de clasificaciones y actualiza la tabla.
- * Se aísla en su propia función para reutilizarse tanto en la carga
-   inicial como en cada ciclo del intervalo automático.
+ * Actualiza una sola categoría: descarga, ordena y renderiza su tabla.
+ * Los errores se contienen aquí para que una hoja con problemas no afecte
+ * a las demás categorías.
+ * @param {string} sheetKey
  */
-async function refreshStandings() {
+async function refreshCategory(sheetKey) {
     try {
-        const standings = await fetchAllStandings();
-        renderStandingsTable(standings);
+        const standings = await fetchCategoryStandings(sheetKey);
+        renderCategoryTable(sheetKey, standings);
     } catch (error) {
-        console.error('[sheets.js] Error general al actualizar clasificaciones:', error.message);
-        renderStandingsError();
+        renderCategoryError(sheetKey);
     }
 }
 
 /**
- * Programa la actualización automática cada SHEETS_CONFIG.REFRESH_INTERVAL_MS,
- * pausando el intervalo cuando la pestaña no está visible para ahorrar
- * llamadas de red innecesarias.
+ * Actualiza las 5 categorías en paralelo. Cada una se resuelve de forma
+ * independiente: no existe una tabla general combinada.
+ */
+async function refreshAllStandings() {
+    const sheetKeys = Object.keys(SHEETS_CONFIG.SHEET_NAMES);
+    await Promise.all(sheetKeys.map((sheetKey) => refreshCategory(sheetKey)));
+}
+
+/**
+ * Programa la actualización automática cada SHEETS_CONFIG.REFRESH_INTERVAL_MS
+ * (60 segundos), pausando el intervalo cuando la pestaña no está visible
+ * para ahorrar llamadas de red innecesarias.
  */
 function scheduleAutoRefresh() {
-    let intervalId = window.setInterval(refreshStandings, SHEETS_CONFIG.REFRESH_INTERVAL_MS);
+    let intervalId = window.setInterval(refreshAllStandings, SHEETS_CONFIG.REFRESH_INTERVAL_MS);
 
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             window.clearInterval(intervalId);
         } else {
-            refreshStandings();
-            intervalId = window.setInterval(refreshStandings, SHEETS_CONFIG.REFRESH_INTERVAL_MS);
+            refreshAllStandings();
+            intervalId = window.setInterval(refreshAllStandings, SHEETS_CONFIG.REFRESH_INTERVAL_MS);
         }
     });
 }
@@ -318,10 +466,10 @@ function scheduleAutoRefresh() {
    9. INICIALIZACIÓN GENERAL
    ========================================================================== */
 function initSheets() {
-    const tableWrapper = qs(SHEETS_CONFIG.TABLE_WRAPPER_SELECTOR);
-    if (!tableWrapper) return;
+    const section = qs(SHEETS_CONFIG.SECTION_SELECTOR);
+    if (!section) return;
 
-    refreshStandings();
+    refreshAllStandings();
     scheduleAutoRefresh();
 }
 
