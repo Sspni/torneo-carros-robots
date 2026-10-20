@@ -24,6 +24,10 @@
         width: 100%;
     }
 
+    .hero__metrics {
+        grid-template-columns: 1fr;
+    }
+
     .btn {
         width: 100%;
         padding: 0.85rem 1.2rem;
@@ -46,6 +50,10 @@
     .hero__actions {
         flex-direction: column;
         width: 100%;
+    }
+
+    .hero__metrics {
+        grid-template-columns: 1fr;
     }
 
     .btn {
@@ -129,8 +137,35 @@
         height: 320px;
     }
 
-    .registration-section__iframe {
-        min-height: 620px;
+    .hero__metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+        width: 100%;
+        margin-top: var(--space-5);
+    }
+
+    .hero__metric-divider {
+        display: none;
+    }
+
+    .registration-guide {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-actions {
+        justify-content: stretch;
+    }
+
+    .registration-actions .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .registration-section__iframe,
+    .google-form {
+        min-height: 1450px;
     }
 }
 
@@ -523,4 +558,22 @@ justify-content:center;
         font-size:18px;
     }
 
+}
+@media screen and (max-width: 767px) {
+    .competition-panel__content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-5);
+        min-height: 0;
+    }
+
+    .competition-panel__specs {
+        grid-template-columns: minmax(0, 1fr);
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid rgba(133, 174, 214, 0.25);
+    }
+
+    .competition-panel__identity {
+        align-items: flex-start;
+    }
 }

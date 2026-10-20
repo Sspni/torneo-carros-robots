@@ -7,7 +7,7 @@
 
     <!-- SEO básico -->
     <title>Torneo Escolar de Carros Robots | Competencia de Robótica Estudiantil</title>
-    <meta name="description" content="Sitio oficial del Torneo Escolar de Carros Robots. Inscripciones, categorías (Sumo, Soccer, Fútbol Americano, 40 Metros, Laberinto), clasificaciones en vivo y toda la información del evento.">
+    <meta name="description" content="Sitio oficial de CERVANTES TECH 2026. Inscripciones, categorías de robótica, clasificaciones y toda la información del torneo.">
     <meta name="keywords" content="torneo robots, carros robots, sumo robots, robótica escolar, competencia STEM, torneo escolar">
     <meta name="author" content="Torneo Escolar de Carros Robots">
     <meta name="robots" content="index, follow">
@@ -72,6 +72,7 @@
                 <li role="none"><a role="menuitem" href="#inscripcion" class="navbar__link">Inscripción</a></li>
                 <li role="none"><a role="menuitem" href="#clasificaciones" class="navbar__link">Clasificaciones</a></li>
                 <li role="none"><a role="menuitem" href="#proximamente" class="navbar__link">Próximamente</a></li>
+                <li role="none"><a role="menuitem" href="#colegio" class="navbar__link">Colegio</a></li>
                 <li role="none"><a role="menuitem" href="#contacto" class="navbar__link">Contacto</a></li>
             </ul>
         </nav>
@@ -82,12 +83,39 @@
         <!-- ============ HERO ============ -->
         <section id="hero" class="hero" aria-label="Presentación principal del torneo">
             <div class="hero__container">
-                <p class="hero__eyebrow">Edición Anual</p>
+                <div class="hero__badge">
+                    <span class="hero__pulse" aria-hidden="true"></span>
+                    <span>Edición 2026 · Gimnasio Cervantes</span>
+                </div>
                 <h1 class="hero__title">Torneo Escolar de Carros Robots</h1>
-                <p class="hero__subtitle">Robótica, ingeniería y competencia en un solo escenario. Construye, programa y compite.</p>
+                <p class="hero__subtitle">Robótica, ingeniería y competencia en un solo escenario. Construye, programa y compite junto a los colegios más destacados.</p>
                 <div class="hero__actions">
-                    <a href="#inscripcion" class="btn btn--primary" aria-label="Ir a la sección de inscripción">Inscribir mi equipo</a>
-                    <a href="#deportes" class="btn btn--secondary" aria-label="Ver categorías del torneo">Ver categorías</a>
+                    <a href="#inscripcion" class="btn btn--primary" aria-label="Ir a la sección de inscripción">
+                        <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>
+                        Inscribir mi equipo
+                    </a>
+                    <a href="#deportes" class="btn btn--secondary" aria-label="Ver categorías del torneo">
+                        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                        Ver categorías
+                    </a>
+                </div>
+
+                <!-- Métricas visuales de impacto en el Hero -->
+                <div class="hero__metrics" role="region" aria-label="Datos destacados del torneo">
+                    <div class="hero__metric">
+                        <span class="hero__metric-value">5</span>
+                        <span class="hero__metric-label">Categorías Oficiales</span>
+                    </div>
+                    <div class="hero__metric-divider" aria-hidden="true"></div>
+                    <div class="hero__metric">
+                        <span class="hero__metric-value">12 Sep</span>
+                        <span class="hero__metric-label">Fecha del Torneo</span>
+                    </div>
+                    <div class="hero__metric-divider" aria-hidden="true"></div>
+                    <div class="hero__metric">
+                        <span class="hero__metric-value">Facatativá</span>
+                        <span class="hero__metric-label">Colegio Sede</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -95,26 +123,34 @@
         <!-- ============ MODELO 3D ============ -->
         <section id="modelo-3d" class="model-section" aria-labelledby="modelo-3d-titulo">
             <div class="model-section__container">
+                <span class="hero__eyebrow">
+                    <i class="fa-solid fa-cube" aria-hidden="true"></i> Interactivo 3D
+                </span>
                 <h2 id="modelo-3d-titulo" class="section-title">Explora el Carro Robot</h2>
-                <p class="section-description">Gira, acerca y descubre el diseño oficial del carro robot en 3D.</p>
+                <p class="section-description">Gira 360°, haz zoom y examina el chasis y la estructura del carro robot oficial del torneo.</p>
 
-                <model-viewer
-                    id="robotModel"
-                    class="model-viewer"
-                    src="assets/models/robot.glb"
-                    alt="Modelo 3D interactivo del carro robot oficial del torneo"
-                    poster="assets/img/model-poster.jpg"
-                    camera-controls
-                    auto-rotate
-                    shadow-intensity="1"
-                    exposure="1"
-                    ar
-                    ar-modes="webxr scene-viewer quick-look"
-                    aria-label="Visor interactivo del modelo 3D del carro robot">
-                    <button slot="ar-button" class="model-viewer__ar-button" aria-label="Ver el carro robot en realidad aumentada">
-                        Ver en tu espacio
-                    </button>
-                </model-viewer>
+                <div class="model-viewer__wrapper">
+                    <model-viewer
+                        id="robotModel"
+                        class="model-viewer"
+                        src="assets/models/robot.glb"
+                        alt="Modelo 3D interactivo del carro robot oficial del torneo"
+                        poster="assets/img/model-poster.jpg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="1"
+                        exposure="1"
+                        ar
+                        ar-modes="webxr scene-viewer quick-look"
+                        aria-label="Visor interactivo del modelo 3D del carro robot">
+                        <button slot="ar-button" class="model-viewer__ar-button" aria-label="Ver el carro robot en realidad aumentada">
+                            <i class="fa-solid fa-vr-cardboard" aria-hidden="true"></i> Ver en tu espacio (AR)
+                        </button>
+                    </model-viewer>
+                    <p class="model-viewer__hint">
+                        <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Arrastra para girar · Usa scroll para zoom
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -122,22 +158,35 @@
         <section id="informacion-general" class="info-section" aria-labelledby="info-general-titulo">
             <div class="info-section__container">
                 <h2 id="info-general-titulo" class="section-title">Información General</h2>
+                <p class="section-description">Todo lo que necesitas saber para preparar tu delegación y vivir la competencia.</p>
                 <div class="info-section__grid">
                     <article class="info-card" aria-label="Fecha del evento">
-                        <h3 class="info-card__title">Fecha</h3>
-                        <p class="info-card__text">Sábado 12 de septiembre, 8:00 a.m. - 4:00 p.m.</p>
+                        <div class="info-card__icon-wrapper" aria-hidden="true">
+                            <i class="fa-solid fa-calendar-day"></i>
+                        </div>
+                        <h3 class="info-card__title">Fecha y Horario</h3>
+                        <p class="info-card__text">Sábado 12 de septiembre<br>8:00 a.m. – 4:00 p.m.</p>
                     </article>
                     <article class="info-card" aria-label="Lugar del evento">
-                        <h3 class="info-card__title">Lugar</h3>
-                        <p class="info-card__text">Coliseo Deportivo Institucional</p>
+                        <div class="info-card__icon-wrapper" aria-hidden="true">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="info-card__title">Lugar y Sede</h3>
+                        <p class="info-card__text">Coliseo Deportivo Institucional<br>Gimnasio Cervantes, Facatativá</p>
                     </article>
                     <article class="info-card" aria-label="Requisitos de participación">
+                        <div class="info-card__icon-wrapper" aria-hidden="true">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
                         <h3 class="info-card__title">Requisitos</h3>
-                        <p class="info-card__text">Equipos de 2 a 4 estudiantes, robot propio, reglamento firmado.</p>
+                        <p class="info-card__text">Equipos de 2 a 4 estudiantes, robot propio y reglamento oficial firmado.</p>
                     </article>
                     <article class="info-card" aria-label="Premios del torneo">
-                        <h3 class="info-card__title">Premios</h3>
-                        <p class="info-card__text">Trofeos, medallas y kits de robótica para los primeros lugares.</p>
+                        <div class="info-card__icon-wrapper" aria-hidden="true">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="info-card__title">Premios y Reconocimientos</h3>
+                        <p class="info-card__text">Trofeos, medallas y kits de robótica e innovación para los primeros lugares.</p>
                     </article>
                 </div>
             </div>
@@ -147,259 +196,348 @@
         <section id="deportes" class="sports-section" aria-labelledby="deportes-titulo">
             <div class="sports-section__container">
                 <h2 id="deportes-titulo" class="section-title">Categorías del Torneo</h2>
+                <p class="section-description">Cinco retos para competir, crear y poner a prueba el talento en robótica.</p>
 
-                <div class="tabs" role="tablist" aria-label="Categorías de competencia">
-                    <button class="tabs__button" id="tab-sumo" role="tab" aria-selected="true" aria-controls="panel-sumo">Sumo</button>
-                    <button class="tabs__button" id="tab-soccer" role="tab" aria-selected="false" aria-controls="panel-soccer" tabindex="-1">Soccer</button>
-                    <button class="tabs__button" id="tab-futbol-americano" role="tab" aria-selected="false" aria-controls="panel-futbol-americano" tabindex="-1">Fútbol Americano</button>
-                    <button class="tabs__button" id="tab-40-metros" role="tab" aria-selected="false" aria-controls="panel-40-metros" tabindex="-1">40 Metros</button>
-                    <button class="tabs__button" id="tab-laberinto" role="tab" aria-selected="false" aria-controls="panel-laberinto" tabindex="-1">Laberinto</button>
+                <div class="tabs competition-tabs" role="tablist" aria-label="Categorías de competencia">
+                    <button class="tabs__button" id="tab-minisumo" role="tab" aria-selected="true" aria-controls="panel-competition-minisumo">MiniSumo</button>
+                    <button class="tabs__button" id="tab-soccer-10x10" role="tab" aria-selected="false" aria-controls="panel-competition-soccer-10x10" tabindex="-1">Robot Soccer 10×10</button>
+                    <button class="tabs__button" id="tab-soccer-15x15" role="tab" aria-selected="false" aria-controls="panel-competition-soccer-15x15" tabindex="-1">Robot Soccer 15×15</button>
+                    <button class="tabs__button" id="tab-futbol-americano" role="tab" aria-selected="false" aria-controls="panel-competition-futbol-americano" tabindex="-1">Fútbol americano</button>
+                    <button class="tabs__button" id="tab-mario-cars" role="tab" aria-selected="false" aria-controls="panel-competition-mario-cars" tabindex="-1">Mario Cars</button>
                 </div>
 
-                <div class="tabs__panels">
-
-                    <!-- SUMO -->
-                    <article id="sumo" class="tab-panel" role="tabpanel" aria-labelledby="tab-sumo" tabindex="0">
-                        <div id="panel-sumo" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Reglas Sumo</h3>
-                            <p class="tab-panel__text">Dos robots autónomos compiten dentro de un dojo circular. El objetivo es empujar completamente al robot rival fuera del área de combate o hacer que pierda movilidad.</p>
-                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Sumo">
-                                <li>Peso máximo: 1 kg</li>
-                                <li>Dimensiones máximas: 20 x 20 cm</li>
-                                <li>Duración del combate: 3 minutos</li>
-                                <h3 class="tab-panel__title">Desarrollo del combate</h3>
-                                <li>Combate entre dos robots.</li>
-                                <li>Se juega al mejor de 3 rondas </li>
-                                <li>Cada ronda tiene un tiempo maximo</li>
-                                <li>Gana quien consiga 2 victorias o mas puntos </li>
-                                <h3 class="tab-panel__title">Penalizaciones</h3>
-                                <li>Salir voluntariamente del dojo </li>
-                                <li>Separa partes del robot</li>
-                                <li>Manipular el robot durante el combate</li>
-                                <li>Retrasar el inicio del enfrentamiento</li>
-                                <li>Uso de elementos peligrosos</li>    
-                            </ul>
-                            
-                        </div>
-                        
-                    </article>
-
-                    <!-- SOCCER -->
-                    <article id="soccer" class="tab-panel" role="tabpanel" aria-labelledby="tab-soccer" tabindex="0" hidden>
-                        <div id="panel-soccer" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Reglas Soccer</h3>
-                            <p class="tab-panel__text">Equipos de robots compiten para anotar goles en una cancha reducida usando control remoto o autonomía.</p>
-                            <h3 class="tab-panel__title">Partido</h3>
-                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Soccer">
-                                <li>Equipos de 2 robots</li>
-                                <li>Duración: 2 tiempos de 5 minutos</li>
-                                <li>Gana quien marque mas goles </li>
-                                <li>Cambio de lado al descanso</li>
-                                <li>En empate puede existir definición según el reglamento del torneo.</li>
-                                <h3 class="tab-panel__title">Penalizaciones</h3>
-                                <li>Sujetar permanentemente la pelota </li>
-                                <li>Golpear intencionalmente a otros robots </li>
-                                <li>Bloquear completamente el arco </li>
-                                <li>Manipular robots durante el juego</li>
-
-                            </ul>
+                <div class="tabs__panels competition-panels">
+                    <article id="panel-competition-minisumo" class="tab-panel competition-panel" role="tabpanel" aria-labelledby="tab-minisumo" tabindex="0">
+                        <div class="tab-panel__content competition-panel__content">
+                            <div class="competition-panel__intro">
+                                <div class="competition-panel__identity">
+                                    <span class="competition-panel__icon"><i class="fa-solid fa-robot" aria-hidden="true"></i></span>
+                                    <h3 class="competition-panel__title">MiniSumo</h3>
+                                </div>
+                                <p class="competition-panel__description">Una competencia de robótica en formato MiniSumo para robots compactos.</p>
+                            </div>
+                            <dl class="competition-panel__specs">
+                                <div class="competition-panel__fact">
+                                    <dt>Dimensiones del robot</dt>
+                                    <dd>10 × 10 cm</dd>
+                                </div>
+                            </dl>
                         </div>
                     </article>
 
-                    <!-- FÚTBOL AMERICANO -->
-                    <article id="futbol-americano" class="tab-panel" role="tabpanel" aria-labelledby="tab-futbol-americano" tabindex="0" hidden>
-                        <div id="panel-futbol-americano" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Fútbol Americano</h3>
-                            <p class="tab-panel__text">Robots avanzan por un campo esquivando obstáculos y oponentes para anotar en la zona final.</p>
-                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Fútbol Americano">
-                                <li>Campo de 3 metros de largo</li>
-                                <li>Contacto controlado permitido</li>
-                                <li>Control remoto</li>
-                                <h3 class="tab-panel__title">Anotacion</h3>
-                                <li>Touchdown</li>
-                                <li>Intercepcion</li>
-                                <li>Reinicio desde el centro</li>
-                                <h3 class="tab-panel__title">Prohibiciones</h3>
-                                <li>Sujetar permanentemente el balon</li>
-                                <li>Destruir robots</li>
-                                <li>Bloquear completamente el campo</li>
-
-                            </ul>
+                    <article id="panel-competition-soccer-10x10" class="tab-panel competition-panel" role="tabpanel" aria-labelledby="tab-soccer-10x10" tabindex="0" hidden>
+                        <div class="tab-panel__content competition-panel__content">
+                            <div class="competition-panel__intro">
+                                <div class="competition-panel__identity">
+                                    <span class="competition-panel__icon"><i class="fa-solid fa-futbol" aria-hidden="true"></i></span>
+                                    <h3 class="competition-panel__title">Robot Soccer</h3>
+                                </div>
+                                <p class="competition-panel__description">Fútbol robótico en categoría amateur, con una división para robots de 10 × 10 cm.</p>
+                            </div>
+                            <dl class="competition-panel__specs">
+                                <div class="competition-panel__fact">
+                                    <dt>Modalidad</dt>
+                                    <dd>Amateur</dd>
+                                </div>
+                                <div class="competition-panel__fact">
+                                    <dt>Dimensiones del robot</dt>
+                                    <dd>10 × 10 cm</dd>
+                                </div>
+                            </dl>
                         </div>
                     </article>
 
-                    <!-- 40 METROS -->
-                    <article id="cuarenta-metros" class="tab-panel" role="tabpanel" aria-labelledby="tab-40-metros" tabindex="0" hidden>
-                        <div id="panel-40-metros" class="tab-panel__content">
-                            <h3 class="tab-panel__title">40 Metros</h3>
-                            <p class="tab-panel__text">Prueba de velocidad en línea recta. Gana el robot con el mejor tiempo registrado.</p>
-                            <ul class="tab-panel__list" aria-label="Reglas rápidas de 40 Metros">
-                                <li>Pista recta de 40 metros</li>
-                                <li>Dos intentos por equipo</li>
-                                <li>Cronometraje electrónico</li>
-                            </ul>
+                    <article id="panel-competition-soccer-15x15" class="tab-panel competition-panel" role="tabpanel" aria-labelledby="tab-soccer-15x15" tabindex="0" hidden>
+                        <div class="tab-panel__content competition-panel__content">
+                            <div class="competition-panel__intro">
+                                <div class="competition-panel__identity">
+                                    <span class="competition-panel__icon"><i class="fa-solid fa-futbol" aria-hidden="true"></i></span>
+                                    <h3 class="competition-panel__title">Robot Soccer</h3>
+                                </div>
+                                <p class="competition-panel__description">Fútbol robótico en categoría amateur, con una división para robots de 15 × 15 cm.</p>
+                            </div>
+                            <dl class="competition-panel__specs">
+                                <div class="competition-panel__fact">
+                                    <dt>Modalidad</dt>
+                                    <dd>Amateur</dd>
+                                </div>
+                                <div class="competition-panel__fact">
+                                    <dt>Dimensiones del robot</dt>
+                                    <dd>15 × 15 cm</dd>
+                                </div>
+                            </dl>
                         </div>
                     </article>
 
-                    <!-- LABERINTO -->
-                    <article id="laberinto" class="tab-panel" role="tabpanel" aria-labelledby="tab-laberinto" tabindex="0" hidden>
-                        <div id="panel-laberinto" class="tab-panel__content">
-                            <h3 class="tab-panel__title">Laberinto</h3>
-                            <p class="tab-panel__text">Robots autónomos deben resolver un laberinto físico en el menor tiempo posible.</p>
-                            <ul class="tab-panel__list" aria-label="Reglas rápidas de Laberinto">
-                                <li>Sensores permitidos: ultrasónico, infrarrojo, línea</li>
-                                <li>Tiempo límite: 5 minutos</li>
-                                <li>Penalización por colisión</li>
-                            </ul>
+                    <article id="panel-competition-futbol-americano" class="tab-panel competition-panel" role="tabpanel" aria-labelledby="tab-futbol-americano" tabindex="0" hidden>
+                        <div class="tab-panel__content competition-panel__content">
+                            <div class="competition-panel__intro">
+                                <div class="competition-panel__identity">
+                                    <span class="competition-panel__icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+                                    <h3 class="competition-panel__title">Fútbol americano robótico</h3>
+                                </div>
+                                <p class="competition-panel__description">Competencia por equipos que combina estrategia y robótica en el campo.</p>
+                            </div>
+                            <dl class="competition-panel__specs">
+                                <div class="competition-panel__fact">
+                                    <dt>Integrantes por equipo</dt>
+                                    <dd>5</dd>
+                                </div>
+                                <div class="competition-panel__fact">
+                                    <dt>Robots permitidos</dt>
+                                    <dd>10 × 10 cm, 15 × 15 cm o combinación</dd>
+                                </div>
+                            </dl>
                         </div>
                     </article>
 
+                    <article id="panel-competition-mario-cars" class="tab-panel competition-panel" role="tabpanel" aria-labelledby="tab-mario-cars" tabindex="0" hidden>
+                        <div class="tab-panel__content competition-panel__content">
+                            <div class="competition-panel__intro">
+                                <div class="competition-panel__identity">
+                                    <span class="competition-panel__icon"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></span>
+                                    <h3 class="competition-panel__title">Carrera Mario Cars</h3>
+                                </div>
+                                <p class="competition-panel__description">Una carrera de velocidad para poner a prueba el desempeño de los robots.</p>
+                            </div>
+                            <dl class="competition-panel__specs">
+                                <div class="competition-panel__fact">
+                                    <dt>Tipo de competencia</dt>
+                                    <dd>Carrera de velocidad</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
-
         <!-- ============ INSCRIPCIÓN ============ -->
         <section id="inscripcion" class="registration-section" aria-labelledby="inscripcion-titulo">
             <div class="registration-section__container">
-                <h2 id="inscripcion-titulo" class="section-title">Inscripción de Equipos</h2>
-                <p class="section-description">Completa el formulario oficial para inscribir a tu equipo en el torneo.</p>
+                <h2 id="inscripcion-titulo" class="section-title">Inscripciones</h2>
+                <p class="section-description">Elige el formulario según el tipo de inscripción y completa los datos solicitados.</p>
 
-                <div class="registration-section__form-wrapper">
-                    <iframe
-                         class="google-form"
-                         src="https://docs.google.com/forms/d/e/1FAIpQLScG0-NVIWClpzi1uZ-UG2nvXZqM0nqyNJZFUTUeBR2sI7DKWw/viewform?embedded=true" 
-                        
-                         loading="lazy">
+                <div class="registration-options">
+                    <details class="registration-option">
+                        <summary class="registration-option__summary">
+                            <span>
+                                <span class="registration-option__title">Inscripción de equipos de carros robots</span>
+                                <span class="registration-option__description">Para inscribir equipos en MiniSumo, Robot Soccer, Fútbol americano robótico o Carrera Mario Cars.</span>
+                            </span>
+                        </summary>
+                        <div class="registration-option__content">
+                            <!-- Guía rápida de inscripción de robots -->
+                            <div class="registration-guide" aria-label="Pasos para la inscripción de equipos de robots">
+                                <div class="registration-step-card">
+                                    <span class="registration-step-card__number">1</span>
+                                    <h3 class="registration-step-card__title">Datos institucionales</h3>
+                                    <p class="registration-step-card__text">Nombre del colegio, docente encargado y sus datos de contacto.</p>
+                                </div>
+                                <div class="registration-step-card">
+                                    <span class="registration-step-card__number">2</span>
+                                    <h3 class="registration-step-card__title">Datos de participación</h3>
+                                    <p class="registration-step-card__text">Indica el nombre del equipo, selecciona una categoría y registra hasta tres estudiantes.</p>
+                                </div>
+                                <div class="registration-step-card">
+                                    <span class="registration-step-card__number">3</span>
+                                    <h3 class="registration-step-card__title">Revisión y envío</h3>
+                                    <p class="registration-step-card__text">Verifica los datos registrados antes de enviar la inscripción al comité.</p>
+                                </div>
+                            </div>
 
-                    </iframe>
+                            <div class="registration-actions">
+                                <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform?usp=publish-editor"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn btn--secondary">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    Abrir formulario de carros robots en pantalla completa
+                                </a>
+                            </div>
 
+                            <div class="registration-section__form-wrapper">
+                                <iframe
+                                    class="google-form"
+                                    src="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform?embedded=true"
+                                    title="Formulario de inscripción de equipos de carros robots"
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="registration-option">
+                        <summary class="registration-option__summary">
+                            <span>
+                                <span class="registration-option__title">Inscripción de proyectos para la feria de ciencia</span>
+                                <span class="registration-option__description">Para registrar proyectos científicos y sus delegaciones.</span>
+                            </span>
+                        </summary>
+                        <div class="registration-option__content">
+                            <div class="registration-actions">
+                                <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform?usp=publish-editor"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn btn--secondary">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    Abrir formulario de proyectos en pantalla completa
+                                </a>
+                            </div>
+
+                            <div class="registration-section__form-wrapper">
+                                <iframe
+                                    class="google-form"
+                                    src="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform?embedded=true"
+                                    title="Formulario de inscripción de proyectos para la feria de ciencia"
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
 
-       <!-- ============ CLASIFICACIONES ============ -->
+        <!-- ============ CLASIFICACIONES ============ -->
         <section id="clasificaciones" class="standings-section" aria-labelledby="clasificaciones-titulo">
             <div class="standings-section__container">
                 <h2 id="clasificaciones-titulo" class="section-title">Clasificaciones</h2>
-                <p class="section-description">Resultados actualizados en tiempo real desde Google Sheets.</p>
+                <p class="section-description">Consulta los resultados por categoría, actualizados desde Google Sheets.</p>
 
-                <div class="standings-section__table-wrapper">
-                    <h2 id="clasificaciones-titulo" class="section-title">Sumo </h2>
-                    <table id="standingsTableSumo" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Sumo">
-                        <caption class="sr-only">Clasificación de la categoría Sumo</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Equipo</th>
-                                <th scope="col">Colegio</th>
-                                <th scope="col">Victorias</th>
-                                <th scope="col">Empates</th>
-                                <th scope="col">Derrotas</th>
-                                <th scope="col">Puntos</th>
-                                <th scope="col">Tiempo</th>
-                                <th scope="col">Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standingsSumo">
-                            <!-- Filas generadas dinámicamente desde Google Sheets -->
-                        </tbody>
-                    </table>
+                <div class="tabs standings-tabs" role="tablist" aria-label="Categorías de clasificación">
+                    <button class="tabs__button" id="tab-standings-minisumo" role="tab" aria-selected="true" aria-controls="panel-standings-minisumo">MiniSumo</button>
+                    <button class="tabs__button" id="tab-standings-soccer-10x10" role="tab" aria-selected="false" aria-controls="panel-standings-soccer-10x10" tabindex="-1">Robot Soccer 10×10</button>
+                    <button class="tabs__button" id="tab-standings-soccer-15x15" role="tab" aria-selected="false" aria-controls="panel-standings-soccer-15x15" tabindex="-1">Robot Soccer 15×15</button>
+                    <button class="tabs__button" id="tab-standings-americano" role="tab" aria-selected="false" aria-controls="panel-standings-americano" tabindex="-1">Fútbol americano</button>
+                    <button class="tabs__button" id="tab-standings-mario-cars" role="tab" aria-selected="false" aria-controls="panel-standings-mario-cars" tabindex="-1">Mario Cars</button>
                 </div>
 
-                <div class="standings-section__table-wrapper">
-                    <h2 id="clasificaciones-titulo" class="section-title">Soccer </h2>
-                    <table id="standingsTableSoccer" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Soccer">
-                        <caption class="sr-only">Clasificación de la categoría Soccer</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Equipo</th>
-                                <th scope="col">Colegio</th>
-                                <th scope="col">Victorias</th>
-                                <th scope="col">Empates</th>
-                                <th scope="col">Derrotas</th>
-                                <th scope="col">Puntos</th>
-                                <th scope="col">Tiempo</th>
-                                <th scope="col">Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standingsSoccer">
-                            <!-- Filas generadas dinámicamente desde Google Sheets -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="standings-section__table-wrapper">
-                    <h2 id="clasificaciones-titulo" class="section-title">Americano </h2>
-                    <table id="standingsTableAmericano" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Fútbol Americano">
-                        <caption class="sr-only">Clasificación de la categoría Fútbol Americano</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Equipo</th>
-                                <th scope="col">Colegio</th>
-                                <th scope="col">Victorias</th>
-                                <th scope="col">Empates</th>
-                                <th scope="col">Derrotas</th>
-                                <th scope="col">Puntos</th>
-                                <th scope="col">Tiempo</th>
-                                <th scope="col">Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standingsAmericano">
-                            <!-- Filas generadas dinámicamente desde Google Sheets -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="standings-section__table-wrapper">
-                    <h2 id="clasificaciones-titulo" class="section-title">40 metros </h2>
-                    <table id="standingsTable40M" class="standings-table" aria-label="Tabla de clasificaciones de la categoría 40 Metros">
-                        <caption class="sr-only">Clasificación de la categoría 40 Metros</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Equipo</th>
-                                <th scope="col">Colegio</th>
-                                <th scope="col">Victorias</th>
-                                <th scope="col">Empates</th>
-                                <th scope="col">Derrotas</th>
-                                <th scope="col">Puntos</th>
-                                <th scope="col">Tiempo</th>
-                                <th scope="col">Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standings40M">
-                            <!-- Filas generadas dinámicamente desde Google Sheets -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="standings-section__table-wrapper">
-                    <h2 id="clasificaciones-titulo" class="section-title">Laberinto </h2>
-                    <table id="standingsTableLaberinto" class="standings-table" aria-label="Tabla de clasificaciones de la categoría Laberinto">
-                        <caption class="sr-only">Clasificación de la categoría Laberinto</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Equipo</th>
-                                <th scope="col">Colegio</th>
-                                <th scope="col">Victorias</th>
-                                <th scope="col">Empates</th>
-                                <th scope="col">Derrotas</th>
-                                <th scope="col">Puntos</th>
-                                <th scope="col">Tiempo</th>
-                                <th scope="col">Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standingsLaberinto">
-                            <!-- Filas generadas dinámicamente desde Google Sheets -->
-                        </tbody>
-                    </table>
+                <div class="standings-panels">
+                    <article id="panel-standings-minisumo" class="standings-panel tab-panel" role="tabpanel" aria-labelledby="tab-standings-minisumo" tabindex="0">
+                        <div class="standings-section__table-wrapper">
+                            <h3 id="clasificaciones-minisumo-titulo" class="standings-category-title">Clasificación MiniSumo</h3>
+                            <table id="standingsTableMinisumo" class="standings-table" aria-label="Tabla de clasificación: Clasificación MiniSumo">
+                                <caption class="sr-only">Clasificación MiniSumo</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Equipo</th>
+                                        <th scope="col">Colegio</th>
+                                        <th scope="col">Victorias</th>
+                                        <th scope="col">Empates</th>
+                                        <th scope="col">Derrotas</th>
+                                        <th scope="col">Puntos</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="standingsMinisumo">
+                                    <!-- Filas generadas dinámicamente desde Google Sheets -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                    <article id="panel-standings-soccer-10x10" class="standings-panel tab-panel" role="tabpanel" aria-labelledby="tab-standings-soccer-10x10" tabindex="0" hidden>
+                        <div class="standings-section__table-wrapper">
+                            <h3 id="clasificaciones-soccer-10x10-titulo" class="standings-category-title">Clasificación Robot Soccer 10 × 10</h3>
+                            <table id="standingsTableSoccer10x10" class="standings-table" aria-label="Tabla de clasificación: Clasificación Robot Soccer 10 × 10">
+                                <caption class="sr-only">Clasificación Robot Soccer 10 × 10</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Equipo</th>
+                                        <th scope="col">Colegio</th>
+                                        <th scope="col">Victorias</th>
+                                        <th scope="col">Empates</th>
+                                        <th scope="col">Derrotas</th>
+                                        <th scope="col">Puntos</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="standingsSoccer10x10">
+                                    <!-- Filas generadas dinámicamente desde Google Sheets -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                    <article id="panel-standings-soccer-15x15" class="standings-panel tab-panel" role="tabpanel" aria-labelledby="tab-standings-soccer-15x15" tabindex="0" hidden>
+                        <div class="standings-section__table-wrapper">
+                            <h3 id="clasificaciones-soccer-15x15-titulo" class="standings-category-title">Clasificación Robot Soccer 15 × 15</h3>
+                            <table id="standingsTableSoccer15x15" class="standings-table" aria-label="Tabla de clasificación: Clasificación Robot Soccer 15 × 15">
+                                <caption class="sr-only">Clasificación Robot Soccer 15 × 15</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Equipo</th>
+                                        <th scope="col">Colegio</th>
+                                        <th scope="col">Victorias</th>
+                                        <th scope="col">Empates</th>
+                                        <th scope="col">Derrotas</th>
+                                        <th scope="col">Puntos</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="standingsSoccer15x15">
+                                    <!-- Filas generadas dinámicamente desde Google Sheets -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                    <article id="panel-standings-americano" class="standings-panel tab-panel" role="tabpanel" aria-labelledby="tab-standings-americano" tabindex="0" hidden>
+                        <div class="standings-section__table-wrapper">
+                            <h3 id="clasificaciones-americano-titulo" class="standings-category-title">Clasificación Fútbol americano robótico</h3>
+                            <table id="standingsTableAmericano" class="standings-table" aria-label="Tabla de clasificación: Clasificación Fútbol americano robótico">
+                                <caption class="sr-only">Clasificación Fútbol americano robótico</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Equipo</th>
+                                        <th scope="col">Colegio</th>
+                                        <th scope="col">Victorias</th>
+                                        <th scope="col">Empates</th>
+                                        <th scope="col">Derrotas</th>
+                                        <th scope="col">Puntos</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="standingsAmericano">
+                                    <!-- Filas generadas dinámicamente desde Google Sheets -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                    <article id="panel-standings-mario-cars" class="standings-panel tab-panel" role="tabpanel" aria-labelledby="tab-standings-mario-cars" tabindex="0" hidden>
+                        <div class="standings-section__table-wrapper">
+                            <h3 id="clasificaciones-mario-cars-titulo" class="standings-category-title">Clasificación Carrera Mario Cars</h3>
+                            <table id="standingsTableMarioCars" class="standings-table" aria-label="Tabla de clasificación: Clasificación Carrera Mario Cars">
+                                <caption class="sr-only">Clasificación Carrera Mario Cars</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Equipo</th>
+                                        <th scope="col">Colegio</th>
+                                        <th scope="col">Victorias</th>
+                                        <th scope="col">Empates</th>
+                                        <th scope="col">Derrotas</th>
+                                        <th scope="col">Puntos</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="standingsMarioCars">
+                                    <!-- Filas generadas dinámicamente desde Google Sheets -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
-
         <!-- ============ PRÓXIMAMENTE ============ -->
         <section id="proximamente" class="upcoming-section" aria-labelledby="proximamente-titulo">
             <div class="upcoming-section__container">
@@ -675,10 +813,10 @@
 
 </footer>
     <!-- Scripts -->
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/animations.js"></script>
-    <script type="module" src="js/model.js"></script>
-    <script type="module" src="js/sheets.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/animations.js"></script>
+    <script defer src="js/model.js"></script>
+    <script defer src="js/sheets.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+(function () {
 /* ==========================================================================
    TORNEO ESCOLAR DE CARROS ROBOTS — main.js
    JavaScript ES6 Vanilla, modular, sin librerías externas.
@@ -212,44 +213,54 @@ function initScrollSpy() {
    6. TABS DINÁMICOS (CATEGORÍAS DEL TORNEO)
    ========================================================================== */
 function initTabs() {
-    const tabButtons = qsa('.tabs__button');
-    if (!tabButtons.length) return;
+    const tablists = qsa('[role="tablist"]');
+    if (!tablists.length) return;
 
-    const activateTab = (selectedButton) => {
-        tabButtons.forEach((button) => {
-            const isSelected = button === selectedButton;
-            const panel = document.getElementById(button.getAttribute('aria-controls'));
+    tablists.forEach((tablist) => {
+        const tabButtons = qsa('.tabs__button', tablist);
+        if (!tabButtons.length) return;
 
-            button.setAttribute('aria-selected', String(isSelected));
-            button.setAttribute('tabindex', isSelected ? '0' : '-1');
+        const activateTab = (selectedButton) => {
+            tabButtons.forEach((button) => {
+                const isSelected = button === selectedButton;
+                const panelId = button.getAttribute('aria-controls');
+                const panel = panelId ? document.getElementById(panelId) : null;
 
-            if (panel) {
-                const article = panel.closest('.tab-panel');
-                if (article) {
-                    article.hidden = !isSelected;
+                button.setAttribute('aria-selected', String(isSelected));
+                button.setAttribute('tabindex', isSelected ? '0' : '-1');
+
+                if (panel) {
+                    const article = panel.classList.contains('tab-panel') || panel.classList.contains('standings-panel')
+                        ? panel
+                        : panel.closest('.tab-panel, .standings-panel');
+                    if (article) {
+                        article.hidden = !isSelected;
+                    } else {
+                        panel.hidden = !isSelected;
+                    }
                 }
-            }
-        });
+            });
 
-        selectedButton.focus();
-    };
+            selectedButton.focus();
+        };
 
-    tabButtons.forEach((button, index) => {
-        button.addEventListener('click', () => activateTab(button));
+        tabButtons.forEach((button, index) => {
+            button.addEventListener('click', () => activateTab(button));
 
-        // Navegación por teclado con "roving tabindex", según el patrón ARIA de tabs.
-        button.addEventListener('keydown', (event) => {
-            let targetIndex = null;
+            // Navegación por teclado con "roving tabindex", según el patrón ARIA de tabs.
+            button.addEventListener('keydown', (event) => {
+                let targetIndex = null;
 
-            if (event.key === 'ArrowRight') targetIndex = (index + 1) % tabButtons.length;
-            if (event.key === 'ArrowLeft') targetIndex = (index - 1 + tabButtons.length) % tabButtons.length;
-            if (event.key === 'Home') targetIndex = 0;
-            if (event.key === 'End') targetIndex = tabButtons.length - 1;
+                if (event.key === 'ArrowRight') targetIndex = (index + 1) % tabButtons.length;
+                if (event.key === 'ArrowLeft') targetIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+                if (event.key === 'Home') targetIndex = 0;
+                if (event.key === 'End') targetIndex = tabButtons.length - 1;
 
-            if (targetIndex !== null) {
-                event.preventDefault();
-                activateTab(tabButtons[targetIndex]);
-            }
+                if (targetIndex !== null) {
+                    event.preventDefault();
+                    activateTab(tabButtons[targetIndex]);
+                }
+            });
         });
     });
 }
@@ -363,3 +374,5 @@ function initMain() {
 }
 
 document.addEventListener('DOMContentLoaded', initMain);
+
+})();

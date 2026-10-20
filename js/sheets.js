@@ -1,3 +1,4 @@
+(function () {
 /* ==========================================================================
    TORNEO ESCOLAR DE CARROS ROBOTS — sheets.js
    Lectura de clasificaciones desde Google Sheets mediante Fetch API.
@@ -30,30 +31,30 @@ const SHEETS_CONFIG = {
 
     // Nombre exacto de la pestaña (hoja) dentro del Google Sheet para cada categoría.
     SHEET_NAMES: {
-        SUMO: 'SUMO',
-        SOCCER: 'SOCCER',
+        MINISUMO: 'SUMO',
+        SOCCER_10X10: 'SOCCER_10X10',
+        SOCCER_15X15: 'SOCCER_15X15',
         AMERICANO: 'AMERICANO',
-        CUARENTA_M: '40M',
-        LABERINTO: 'LABERINTO',
+        MARIO_CARS: '40MTS',
     },
 
     // Etiquetas legibles usadas únicamente en mensajes (estado vacío / error).
     CATEGORY_LABELS: {
-        SUMO: 'Sumo',
-        SOCCER: 'Soccer',
-        AMERICANO: 'Fútbol Americano',
-        CUARENTA_M: '40 Metros',
-        LABERINTO: 'Laberinto',
+        MINISUMO: 'MiniSumo',
+        SOCCER_10X10: 'Robot Soccer 10 × 10 cm',
+        SOCCER_15X15: 'Robot Soccer 15 × 15 cm',
+        AMERICANO: 'Fútbol americano robótico',
+        MARIO_CARS: 'Carrera Mario Cars',
     },
 
     // Cada categoría/hoja tiene su propia tabla independiente en el HTML.
     // Mapea la clave interna de SHEET_NAMES con el id del <tbody> a llenar.
     SHEET_TBODY_IDS: {
-        SUMO: 'standingsSumo',
-        SOCCER: 'standingsSoccer',
+        MINISUMO: 'standingsMinisumo',
+        SOCCER_10X10: 'standingsSoccer10x10',
+        SOCCER_15X15: 'standingsSoccer15x15',
         AMERICANO: 'standingsAmericano',
-        CUARENTA_M: 'standings40M',
-        LABERINTO: 'standingsLaberinto',
+        MARIO_CARS: 'standingsMarioCars',
     },
 
     // Selector usado únicamente para verificar que la sección de
@@ -67,25 +68,74 @@ const SHEETS_CONFIG = {
     // los mensajes de estado vacío/error): Posición, Equipo, Colegio,
     // Victorias, Empates, Derrotas, Puntos, Tiempo, Observaciones.
     VISIBLE_COLUMNS: 9,
-
-    // Columnas reales de cada hoja de categoría (SUMO, SOCCER, AMERICANO,
-    // 40M, LABERINTO), en el orden exacto A → K.
-    // Únicamente se leen las columnas necesarias para la tabla; ID, Capitán
-    // y Estado se ignoran intencionalmente.
-    COLUMN_INDEX: {
-        // A = ID        -> ignorada
-        TEAM: 1,           // B = Equipo
-        SCHOOL: 2,         // C = Colegio
-        // D = Capitán   -> ignorada
-        // E = Estado    -> ignorada
-        WINS: 5,           // F = Victorias
-        DRAWS: 6,          // G = Empates
-        LOSSES: 7,         // H = Derrotas
-        POINTS: 8,         // I = Puntos
-        TIME: 23,           // J = Tiempo
-        OBSERVATIONS: 22,  // K = Observaciones
-    },
 };
+
+/**
+ * Resuelve dinámicamente los índices de columna examinando las etiquetas
+ * devueltas por Google Sheets (gviz). Esto garantiza total tolerancia a
+ * columnas adicionales o diferencias entre pestañas (ej. 40M vs SUMO).
+ * @param {object} table - Objeto devuelto por parseGvizResponse ({ cols, rows }).
+ * @returns {{
+ *   team: number, school: number, wins: number, draws: number,
+ *   losses: number, points: number, time: number, observations: number
+ * }}
+ */
+function resolveColumnIndices(table) {
+    // Mapeo inicial en -1 para detectar exactamente qué columnas existen
+    const mapping = {
+        team: -1,
+        school: -1,
+        wins: -1,
+        draws: -1,
+        losses: -1,
+        points: -1,
+        time: -1,
+        observations: -1,
+    };
+
+    if (table && Array.isArray(table.cols)) {
+        table.cols.forEach((col, index) => {
+            if (!col || !col.label) return;
+            const lbl = col.label.trim().toLowerCase();
+
+            // Equipo (evita coincidir con preguntas que mencionen la palabra "equipo")
+            if (lbl === 'equipo' || lbl === 'nombre del equipo' || lbl.startsWith('nombre del equipo')) {
+                mapping.team = index;
+            } else if (lbl === 'colegio' || lbl.includes('instituci')) {
+                mapping.school = index;
+            } else if (lbl.includes('victoria')) {
+                mapping.wins = index;
+            } else if (lbl.includes('empate')) {
+                mapping.draws = index;
+            } else if (lbl.includes('derrota')) {
+                mapping.losses = index;
+            } else if (lbl.includes('punto')) {
+                mapping.points = index;
+            } else if (lbl === 'tiempo' || lbl.includes('tiempo')) {
+                mapping.time = index;
+            } else if (lbl.includes('observaci')) {
+                mapping.observations = index;
+            }
+        });
+    }
+
+    // Fallbacks inteligentes según la cantidad total de columnas:
+    // Si la hoja tiene 11 columnas estándar (A -> K), se aplican los índices oficiales.
+    const colCount = table && Array.isArray(table.cols) ? table.cols.length : 0;
+    if (colCount >= 2 && mapping.team === -1) mapping.team = 1;
+    if (colCount >= 3 && mapping.school === -1) mapping.school = 2;
+
+    if (colCount === 11) {
+        if (mapping.wins === -1) mapping.wins = 5;
+        if (mapping.draws === -1) mapping.draws = 6;
+        if (mapping.losses === -1) mapping.losses = 7;
+        if (mapping.points === -1) mapping.points = 8;
+        if (mapping.time === -1) mapping.time = 9;
+        if (mapping.observations === -1) mapping.observations = 10;
+    }
+
+    return mapping;
+}
 
 /* ==========================================================================
    2. UTILIDADES COMPARTIDAS
@@ -203,21 +253,20 @@ function parseGvizResponse(rawText) {
 function mapRowsToStandings(table) {
     if (!table || !Array.isArray(table.rows)) return [];
 
-    const idx = SHEETS_CONFIG.COLUMN_INDEX;
+    const idx = resolveColumnIndices(table);
 
     return table.rows
-    .map((row) => {
+        .map((row) => {
             const cells = row.c || [];
-            console.log("Celdas:", cells);
 
-            const team = toSafeText(cells[idx.TEAM]);
-            const school = toSafeText(cells[idx.SCHOOL]);
-            const wins = toSafeNumber(cells[idx.WINS] && cells[idx.WINS].v);
-            const draws = toSafeNumber(cells[idx.DRAWS] && cells[idx.DRAWS].v);
-            const losses = toSafeNumber(cells[idx.LOSSES] && cells[idx.LOSSES].v);
-            const points = toSafeNumber(cells[idx.POINTS] && cells[idx.POINTS].v);
-            const time = toSafeText(cells[idx.TIME]);
-            const observations = toSafeText(cells[idx.OBSERVATIONS]);
+            const team = idx.team >= 0 ? toSafeText(cells[idx.team]) : '';
+            const school = idx.school >= 0 ? toSafeText(cells[idx.school]) : '';
+            const wins = idx.wins >= 0 ? toSafeNumber(cells[idx.wins] && cells[idx.wins].v) : 0;
+            const draws = idx.draws >= 0 ? toSafeNumber(cells[idx.draws] && cells[idx.draws].v) : 0;
+            const losses = idx.losses >= 0 ? toSafeNumber(cells[idx.losses] && cells[idx.losses].v) : 0;
+            const points = idx.points >= 0 ? toSafeNumber(cells[idx.points] && cells[idx.points].v) : 0;
+            const time = idx.time >= 0 ? toSafeText(cells[idx.time]) : '';
+            const observations = idx.observations >= 0 ? toSafeText(cells[idx.observations]) : '';
 
             return {
                 team,
@@ -231,14 +280,14 @@ function mapRowsToStandings(table) {
                 observations,
             };
         })
-        .filter((entry) => entry.team !== ''); // Descarta filas vacías o de encabezado repetido.
+        .filter((entry) => entry.team !== '' && !entry.team.toLowerCase().includes('nombre del equipo'));
 }
 
 /**
  * Ordena una lista de equipos de una misma categoría según las reglas del
  * torneo:
  *   1) Mayor cantidad de puntos.
- *   2) Si empatan en puntos, menor tiempo.
+ *   2) Si empatan en puntos (o no usan puntos como en pruebas de velocidad), menor tiempo.
  *   3) Si siguen empatados, orden alfabético por nombre de equipo.
  * @param {Array} standings
  * @returns {Array} Lista ordenada (nuevo arreglo, no muta el original).
@@ -283,21 +332,7 @@ async function fetchCategoryStandings(sheetKey) {
     try {
         const rawText = await fetchRawSheet(sheetName);
         const table = parseGvizResponse(rawText);
-         console.log("Categoría:", sheetName);
-         console.log(table.rows);
-
-         console.log("Filas completas:");
-         table.rows.forEach((row, index) => {
-         console.log("Fila", index, row);
-        });
-
         const rawStandings = mapRowsToStandings(table);
-
-         console.log("Equipos procesados:");
-         console.log(rawStandings);
-         console.log(table.rows);
-
-         console.log(rawStandings);
         const sorted = sortStandings(rawStandings);
         return assignPositions(sorted);
     } catch (error) {
@@ -320,9 +355,16 @@ async function fetchCategoryStandings(sheetKey) {
  */
 function createStandingsRow(entry) {
     const row = document.createElement('tr');
+    if (entry.position === 1) {
+        row.classList.add('is-podium-first');
+    }
 
     const positionCell = document.createElement('td');
-    positionCell.textContent = `#${entry.position}`;
+    const badge = document.createElement('span');
+    badge.className = 'standings-pos-badge' + (entry.position <= 3 ? ` standings-pos-badge--${entry.position}` : '');
+    const medalIcon = entry.position === 1 ? '🥇 ' : entry.position === 2 ? '🥈 ' : entry.position === 3 ? '🥉 ' : '';
+    badge.textContent = `${medalIcon}#${entry.position}`;
+    positionCell.appendChild(badge);
 
     const teamCell = document.createElement('td');
     teamCell.textContent = entry.team;
@@ -488,3 +530,4 @@ function initSheets() {
 }
 
 document.addEventListener('DOMContentLoaded', initSheets);
+})();

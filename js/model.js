@@ -1,3 +1,4 @@
+(function () {
 /* ==========================================================================
    TORNEO ESCOLAR DE CARROS ROBOTS — model.js
    Control del visor 3D (<model-viewer>) del carro robot.
@@ -269,3 +270,5 @@ function initModelViewer() {
 }
 
 document.addEventListener('DOMContentLoaded', initModelViewer);
+
+})();

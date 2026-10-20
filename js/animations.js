@@ -1,3 +1,4 @@
+(function () {
 /* ==========================================================================
    TORNEO ESCOLAR DE CARROS ROBOTS — animations.js
    JavaScript ES6 Vanilla, modular, sin librerías externas.
@@ -440,3 +441,5 @@ function initAnimations() {
 }
 
 document.addEventListener('DOMContentLoaded', initAnimations);
+
+})();
