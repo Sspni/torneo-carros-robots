@@ -63,6 +63,12 @@ function initScrollReveal() {
         return;
     }
 
+    // El contenido sigue visible en navegadores sin IntersectionObserver.
+    if (!('IntersectionObserver' in window)) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+        return;
+    }
+
     const observer = new IntersectionObserver(
         (entries, obs) => {
             entries.forEach((entry) => {
@@ -303,14 +309,17 @@ function initSoftParticles() {
         height = canvas.height = hero.offsetHeight;
     };
 
+    const CYBER_COLORS = ['0, 240, 255', '157, 78, 221', '255, 255, 255', '112, 244, 255'];
+
     const createParticles = () => {
-        particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+        particles = Array.from({ length: 55 }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            radius: Math.random() * 1.6 + 0.4,
-            speedY: Math.random() * 0.25 + 0.05,
+            radius: Math.random() * 1.8 + 0.6,
+            speedY: Math.random() * 0.3 + 0.08,
             drift: Math.random() * 0.4 - 0.2,
-            opacity: Math.random() * 0.35 + 0.05,
+            opacity: Math.random() * 0.45 + 0.15,
+            color: CYBER_COLORS[Math.floor(Math.random() * CYBER_COLORS.length)],
         }));
     };
 
@@ -320,10 +329,12 @@ function initSoftParticles() {
         particles.forEach((particle) => {
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(245, 245, 247, ${particle.opacity})`;
+            ctx.fillStyle = `rgba(${particle.color}, ${particle.opacity})`;
+            ctx.shadowBlur = 6;
+            ctx.shadowColor = `rgba(${particle.color}, 0.6)`;
             ctx.fill();
 
-            // Movimiento ascendente lento, simulando polvo de luz flotante.
+            // Movimiento ascendente lento, simulando chispas y polvo de luz cibernético.
             particle.y -= particle.speedY;
             particle.x += particle.drift;
 

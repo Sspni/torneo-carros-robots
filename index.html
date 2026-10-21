@@ -6,36 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- SEO básico -->
-    <title>Torneo Escolar de Carros Robots | Competencia de Robótica Estudiantil</title>
+    <title>CervantesTech 2026 | Torneo Escolar de Carros Robots</title>
     <meta name="description" content="Sitio oficial de CERVANTES TECH 2026. Inscripciones, categorías de robótica, clasificaciones y toda la información del torneo.">
     <meta name="keywords" content="torneo robots, carros robots, sumo robots, robótica escolar, competencia STEM, torneo escolar">
-    <meta name="author" content="Torneo Escolar de Carros Robots">
+    <meta name="author" content="Nicolás Valencia">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.torneorobots.edu.co/">
 
     <!-- Open Graph / Redes sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Torneo Escolar de Carros Robots">
+    <meta property="og:title" content="CervantesTech 2026 | Torneo Escolar de Carros Robots">
     <meta property="og:description" content="Compite, aprende e innova en el Torneo Escolar de Carros Robots. Categorías, inscripciones y clasificaciones en un solo lugar.">
-    <meta property="og:image" content="assets/img/og-cover.jpg">
+    <meta property="og:image" content="https://www.torneorobots.edu.co/assets/img/og-cover.png">
+    <meta property="og:image:alt" content="CervantesTech 2026, Torneo Escolar de Carros Robots">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://www.torneorobots.edu.co/">
     <meta property="og:locale" content="es_CO">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Torneo Escolar de Carros Robots">
     <meta name="twitter:description" content="Compite, aprende e innova en el Torneo Escolar de Carros Robots.">
-    <meta name="twitter:image" content="assets/img/og-cover.jpg">
+    <meta name="twitter:image" content="https://www.torneorobots.edu.co/assets/img/og-cover.png">
 
     <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/cervantestech.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- model-viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -53,9 +56,9 @@
     <!-- ============ NAVBAR ============ -->
     <header id="navbar" class="navbar" role="banner">
         <nav class="navbar__container" role="navigation" aria-label="Navegación principal">
-            <a href="#hero" class="navbar__brand" aria-label="Ir al inicio - Torneo Escolar de Carros Robots">
-                <img src="assets/img/logo.svg" alt="Logotipo del Torneo Escolar de Carros Robots" class="navbar__logo">
-                <span class="navbar__title">Torneo de Carros Robots</span>
+            <a href="#hero" class="navbar__brand" aria-label="Ir al inicio - CervantesTech">
+                <img src="assets/img/cervantestech-mark.svg" alt="" aria-hidden="true" class="navbar__logo">
+                <span class="navbar__title">CervantesTech</span>
             </a>
 
             <button type="button" id="navToggle" class="navbar__toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
@@ -64,16 +67,13 @@
                 <span class="navbar__toggle-bar"></span>
             </button>
 
-            <ul id="navMenu" class="navbar__menu" role="menubar">
-                <li role="none"><a role="menuitem" href="#hero" class="navbar__link">Inicio</a></li>
-                <li role="none"><a role="menuitem" href="#modelo-3d" class="navbar__link">Modelo 3D</a></li>
-                <li role="none"><a role="menuitem" href="#informacion-general" class="navbar__link">Información</a></li>
-                <li role="none"><a role="menuitem" href="#deportes" class="navbar__link">Categorías</a></li>
-                <li role="none"><a role="menuitem" href="#inscripcion" class="navbar__link">Inscripción</a></li>
-                <li role="none"><a role="menuitem" href="#clasificaciones" class="navbar__link">Clasificaciones</a></li>
-                <li role="none"><a role="menuitem" href="#proximamente" class="navbar__link">Próximamente</a></li>
-                <li role="none"><a role="menuitem" href="#colegio" class="navbar__link">Colegio</a></li>
-                <li role="none"><a role="menuitem" href="#contacto" class="navbar__link">Contacto</a></li>
+            <ul id="navMenu" class="navbar__menu">
+                <li><a href="#hero" class="navbar__link">Inicio</a></li>
+                <li><a href="#modelo-3d" class="navbar__link">Robot 3D</a></li>
+                <li><a href="#deportes" class="navbar__link">Categorías</a></li>
+                <li><a href="#inscripcion" class="navbar__link">Inscripciones</a></li>
+                <li><a href="#clasificaciones" class="navbar__link">Resultados</a></li>
+                <li><a href="#colegio" class="navbar__link">Sede</a></li>
             </ul>
         </nav>
     </header>
@@ -85,10 +85,10 @@
             <div class="hero__container">
                 <div class="hero__badge">
                     <span class="hero__pulse" aria-hidden="true"></span>
-                    <span>Edición 2026 · Gimnasio Cervantes</span>
+                    <span>CervantesTech 2026 · Gimnasio Cervantes · Facatativá</span>
                 </div>
-                <h1 class="hero__title">Torneo Escolar de Carros Robots</h1>
-                <p class="hero__subtitle">Robótica, ingeniería y competencia en un solo escenario. Construye, programa y compite junto a los colegios más destacados.</p>
+                <h1 class="hero__title">Torneo Escolar de <span class="hero__title-accent">Carros Robots</span></h1>
+                <p class="hero__subtitle">Robótica aplicada, ingeniería de precisión y competencia en el máximo escenario STEM escolar. Construye, programa y compite junto a las delegaciones más destacadas.</p>
                 <div class="hero__actions">
                     <a href="#inscripcion" class="btn btn--primary" aria-label="Ir a la sección de inscripción">
                         <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>
@@ -97,6 +97,10 @@
                     <a href="#deportes" class="btn btn--secondary" aria-label="Ver categorías del torneo">
                         <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
                         Ver categorías
+                    </a>
+                    <a href="#clasificaciones" class="btn btn--ghost" aria-label="Ver clasificaciones en vivo">
+                        <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                        Resultados en vivo
                     </a>
                 </div>
 
@@ -108,13 +112,13 @@
                     </div>
                     <div class="hero__metric-divider" aria-hidden="true"></div>
                     <div class="hero__metric">
-                        <span class="hero__metric-value">12 Sep</span>
-                        <span class="hero__metric-label">Fecha del Torneo</span>
+                        <span class="hero__metric-value">28 Oct</span>
+                        <span class="hero__metric-label">Torneo · 2026</span>
                     </div>
                     <div class="hero__metric-divider" aria-hidden="true"></div>
                     <div class="hero__metric">
                         <span class="hero__metric-value">Facatativá</span>
-                        <span class="hero__metric-label">Colegio Sede</span>
+                        <span class="hero__metric-label">Gimnasio Cervantes</span>
                     </div>
                 </div>
             </div>
@@ -123,11 +127,11 @@
         <!-- ============ MODELO 3D ============ -->
         <section id="modelo-3d" class="model-section" aria-labelledby="modelo-3d-titulo">
             <div class="model-section__container">
-                <span class="hero__eyebrow">
-                    <i class="fa-solid fa-cube" aria-hidden="true"></i> Interactivo 3D
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-cube" aria-hidden="true"></i> Inspección CAD 3D
                 </span>
-                <h2 id="modelo-3d-titulo" class="section-title">Explora el Carro Robot</h2>
-                <p class="section-description">Gira 360°, haz zoom y examina el chasis y la estructura del carro robot oficial del torneo.</p>
+                <h2 id="modelo-3d-titulo" class="section-title">Explora el Carro Robot Oficial</h2>
+                <p class="section-description">Gira 360°, haz zoom y examina el chasis, la tracción y la arquitectura electrónica del robot oficial de competencia.</p>
 
                 <div class="model-viewer__wrapper">
                     <model-viewer
@@ -135,7 +139,7 @@
                         class="model-viewer"
                         src="assets/models/robot.glb"
                         alt="Modelo 3D interactivo del carro robot oficial del torneo"
-                        poster="assets/img/model-poster.jpg"
+                        poster="assets/img/model-poster.svg"
                         camera-controls
                         auto-rotate
                         shadow-intensity="1"
@@ -148,7 +152,7 @@
                         </button>
                     </model-viewer>
                     <p class="model-viewer__hint">
-                        <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Arrastra para girar · Usa scroll para zoom
+                        <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Arrastra para girar 360° · Usa scroll para zoom
                     </p>
                 </div>
             </div>
@@ -157,36 +161,39 @@
         <!-- ============ INFORMACIÓN GENERAL ============ -->
         <section id="informacion-general" class="info-section" aria-labelledby="info-general-titulo">
             <div class="info-section__container">
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Guía del Evento
+                </span>
                 <h2 id="info-general-titulo" class="section-title">Información General</h2>
-                <p class="section-description">Todo lo que necesitas saber para preparar tu delegación y vivir la competencia.</p>
+                <p class="section-description">Todo lo que necesitas saber para preparar tu delegación y competir al más alto nivel.</p>
                 <div class="info-section__grid">
                     <article class="info-card" aria-label="Fecha del evento">
                         <div class="info-card__icon-wrapper" aria-hidden="true">
                             <i class="fa-solid fa-calendar-day"></i>
                         </div>
                         <h3 class="info-card__title">Fecha y Horario</h3>
-                        <p class="info-card__text">Sábado 12 de septiembre<br>8:00 a.m. – 4:00 p.m.</p>
+                        <p class="info-card__text">Miércoles 28 de octubre de 2026<br><strong>9:00 a.m. – 3:00 p.m.</strong></p>
                     </article>
                     <article class="info-card" aria-label="Lugar del evento">
                         <div class="info-card__icon-wrapper" aria-hidden="true">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <h3 class="info-card__title">Lugar y Sede</h3>
-                        <p class="info-card__text">Coliseo Deportivo Institucional<br>Gimnasio Cervantes, Facatativá</p>
+                        <p class="info-card__text">Gimnasio Cervantes<br><strong>Calle 9 # 6-71, Facatativá</strong></p>
                     </article>
                     <article class="info-card" aria-label="Requisitos de participación">
                         <div class="info-card__icon-wrapper" aria-hidden="true">
                             <i class="fa-solid fa-clipboard-check"></i>
                         </div>
-                        <h3 class="info-card__title">Requisitos</h3>
-                        <p class="info-card__text">Equipos de 2 a 4 estudiantes, robot propio y reglamento oficial firmado.</p>
+                        <h3 class="info-card__title">Requisitos Técnicos</h3>
+                        <p class="info-card__text">Institución oficial, docente responsable y hasta tres pilotos acreditados.</p>
                     </article>
                     <article class="info-card" aria-label="Premios del torneo">
                         <div class="info-card__icon-wrapper" aria-hidden="true">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
-                        <h3 class="info-card__title">Premios y Reconocimientos</h3>
-                        <p class="info-card__text">Trofeos, medallas y kits de robótica e innovación para los primeros lugares.</p>
+                        <h3 class="info-card__title">Premios y Podio</h3>
+                        <p class="info-card__text">Trofeos de campeonato, medallas oficiales y kits de robótica e innovación STEM.</p>
                     </article>
                 </div>
             </div>
@@ -195,8 +202,11 @@
         <!-- ============ DEPORTES / CATEGORÍAS (TABS) ============ -->
         <section id="deportes" class="sports-section" aria-labelledby="deportes-titulo">
             <div class="sports-section__container">
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-microchip" aria-hidden="true"></i> Desafíos de Robótica
+                </span>
                 <h2 id="deportes-titulo" class="section-title">Categorías del Torneo</h2>
-                <p class="section-description">Cinco retos para competir, crear y poner a prueba el talento en robótica.</p>
+                <p class="section-description">Cinco retos oficiales para competir, crear y poner a prueba la ingeniería de tu robot. Selecciona una categoría para ver sus detalles.</p>
 
                 <div class="tabs competition-tabs" role="tablist" aria-label="Categorías de competencia">
                     <button class="tabs__button" id="tab-minisumo" role="tab" aria-selected="true" aria-controls="panel-competition-minisumo">MiniSumo</button>
@@ -314,15 +324,18 @@
         <!-- ============ INSCRIPCIÓN ============ -->
         <section id="inscripcion" class="registration-section" aria-labelledby="inscripcion-titulo">
             <div class="registration-section__container">
-                <h2 id="inscripcion-titulo" class="section-title">Inscripciones</h2>
-                <p class="section-description">Elige el formulario según el tipo de inscripción y completa los datos solicitados.</p>
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-id-card" aria-hidden="true"></i> Registro Abierto
+                </span>
+                <h2 id="inscripcion-titulo" class="section-title">Inscripciones Oficiales</h2>
+                <p class="section-description">Selecciona el formulario correspondiente a tu modalidad y completa el registro de tu delegación.</p>
 
                 <div class="registration-options">
-                    <details class="registration-option">
+                    <details class="registration-option" open>
                         <summary class="registration-option__summary">
                             <span>
                                 <span class="registration-option__title">Inscripción de equipos de carros robots</span>
-                                <span class="registration-option__description">Para inscribir equipos en MiniSumo, Robot Soccer, Fútbol americano robótico o Carrera Mario Cars.</span>
+                                <span class="registration-option__description">Formulario y requisitos para inscribir equipos en las categorías de robótica.</span>
                             </span>
                         </summary>
                         <div class="registration-option__content">
@@ -345,21 +358,32 @@
                                 </div>
                             </div>
 
+                            <div class="registration-data-note" aria-label="Datos solicitados para inscribir un equipo">
+                                <h3>Ten estos datos listos para la inscripción</h3>
+                                <ul>
+                                    <li>Nombre de la institución y modalidad de participación</li>
+                                    <li>Nombre del equipo</li>
+                                    <li>Nombre del coach, director o docente encargado</li>
+                                    <li>Correo del docente y número de celular</li>
+                                    <li>Nombre completo y documento de identidad de los jugadores 1, 2 y 3</li>
+                                </ul>
+                            </div>
+
                             <div class="registration-actions">
                                 <a
-                                    href="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform?usp=publish-editor"
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="btn btn--secondary">
                                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                    Abrir formulario de carros robots en pantalla completa
+                                    Abrir formulario de carros robots
                                 </a>
                             </div>
 
                             <div class="registration-section__form-wrapper">
                                 <iframe
                                     class="google-form"
-                                    src="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform?embedded=true"
+                                    src="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform?embedded=true"
                                     title="Formulario de inscripción de equipos de carros robots"
                                     loading="lazy">
                                 </iframe>
@@ -377,19 +401,19 @@
                         <div class="registration-option__content">
                             <div class="registration-actions">
                                 <a
-                                    href="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform?usp=publish-editor"
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="btn btn--secondary">
                                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                    Abrir formulario de proyectos en pantalla completa
+                                    Abrir formulario de proyectos
                                 </a>
                             </div>
 
                             <div class="registration-section__form-wrapper">
                                 <iframe
                                     class="google-form"
-                                    src="https://docs.google.com/forms/d/e/1FAIpQLSd6uV6nKrPvfRwTcNwlImoRIRkudIE6Ec1n_CSPG8EXC8RfMA/viewform?embedded=true"
+                                    src="https://docs.google.com/forms/d/e/1FAIpQLSdk7gYXL8x7LM4Z4PSIr3VY4TIqjjdW27HlFqBDm_FhK_f7Iw/viewform?embedded=true"
                                     title="Formulario de inscripción de proyectos para la feria de ciencia"
                                     loading="lazy">
                                 </iframe>
@@ -403,8 +427,11 @@
         <!-- ============ CLASIFICACIONES ============ -->
         <section id="clasificaciones" class="standings-section" aria-labelledby="clasificaciones-titulo">
             <div class="standings-section__container">
-                <h2 id="clasificaciones-titulo" class="section-title">Clasificaciones</h2>
-                <p class="section-description">Consulta los resultados por categoría, actualizados desde Google Sheets.</p>
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Tabla de Posiciones
+                </span>
+                <h2 id="clasificaciones-titulo" class="section-title">Clasificaciones en Vivo</h2>
+                <p class="section-description">Consulta los resultados oficiales por categoría, sincronizados en tiempo real desde Google Sheets.</p>
 
                 <div class="tabs standings-tabs" role="tablist" aria-label="Categorías de clasificación">
                     <button class="tabs__button" id="tab-standings-minisumo" role="tab" aria-selected="true" aria-controls="panel-standings-minisumo">MiniSumo</button>
@@ -541,129 +568,80 @@
         <!-- ============ PRÓXIMAMENTE ============ -->
         <section id="proximamente" class="upcoming-section" aria-labelledby="proximamente-titulo">
             <div class="upcoming-section__container">
-                <h2 id="proximamente-titulo" class="section-title">Próximamente</h2>
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-timeline" aria-hidden="true"></i> Fases del Torneo
+                </span>
+                <h2 id="proximamente-titulo" class="section-title">Cronograma de Competencia</h2>
+                <p class="section-description">Las tres etapas decisivas que definirán al campeón oficial de CervantesTech 2026.</p>
                 <div class="upcoming-section__grid" id="upcomingGrid">
-                    <article class="upcoming-card" aria-label="Evento próximo">
+                    <article class="upcoming-card" aria-label="Fase 1: Ronda Clasificatoria">
+                        <span class="section-eyebrow" style="margin-bottom: 0.8rem; font-size: 0.72rem;">Fase 01 · Grupos</span>
                         <h3 class="upcoming-card__title">Ronda Clasificatoria</h3>
-                        <p class="upcoming-card__text">Inicio de las eliminatorias por categoría.</p>
+                        <p class="upcoming-card__text">Inicio de las eliminatorias por categoría, calibración de sensores y pruebas técnicas de pista.</p>
                     </article>
-                    <article class="upcoming-card" aria-label="Evento próximo">
-                        <h3 class="upcoming-card__title">Semifinales</h3>
-                        <p class="upcoming-card__text">Los mejores equipos se enfrentan por un lugar en la gran final.</p>
+                    <article class="upcoming-card" aria-label="Fase 2: Semifinales">
+                        <span class="section-eyebrow" style="margin-bottom: 0.8rem; font-size: 0.72rem;">Fase 02 · Playoffs</span>
+                        <h3 class="upcoming-card__title">Semifinales de Alto Impacto</h3>
+                        <p class="upcoming-card__text">Los mejores equipos y robots se enfrentan en combate directo por un lugar en la gran final.</p>
                     </article>
-                    <article class="upcoming-card" aria-label="Evento próximo">
-                        <h3 class="upcoming-card__title">Gran Final</h3>
-                        <p class="upcoming-card__text">Premiación y cierre oficial del torneo.</p>
+                    <article class="upcoming-card" aria-label="Fase 3: Gran Final">
+                        <span class="section-eyebrow" style="margin-bottom: 0.8rem; font-size: 0.72rem;">Fase 03 · Clímax</span>
+                        <h3 class="upcoming-card__title">Gran Final y Premiación</h3>
+                        <p class="upcoming-card__text">Combates por el título, entrega de trofeos de campeonato, medallas y kits de robótica e innovación.</p>
                     </article>
                 </div>
             </div>
         </section>
 
         <!-- ============ COLEGIO ORGANIZADOR ============ -->
-<section id="colegio" class="school-section" aria-labelledby="school-title">
+        <section id="colegio" class="school-section" aria-labelledby="school-title">
+            <div class="school-container">
+                <div class="school-left">
+                    <span class="school-badge">
+                        <i class="fa-solid fa-award" aria-hidden="true"></i> Institución Organizadora
+                    </span>
+                    <h2 id="school-title" class="section-title">
+                        Gimnasio Cervantes
+                    </h2>
+                    <p class="section-description">
+                        El Gimnasio Cervantes es la institución líder y organizadora del Torneo Escolar de Carros Robots. Fomentamos la creatividad, la innovación, la ingeniería aplicada y el trabajo en equipo mediante experiencias STEM que acercan a los estudiantes al futuro de la tecnología.
+                    </p>
 
-    <div class="school-container">
+                    <div class="school-data">
+                        <div class="school-item">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <div>
+                                <strong>Dirección Sede Principal</strong>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Gimnasio+Cervantes+Calle+9+%236-71+Facatativ%C3%A1+Cundinamarca" target="_blank" rel="noopener noreferrer">Calle 9 # 6-71, Facatativá, Cundinamarca · Cómo llegar <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
+                            </div>
+                        </div>
 
-        <div class="school-left">
+                        <div class="school-item">
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                            <div class="school-item__content">
+                                <strong>Líneas Telefónicas</strong>
+                                <a href="tel:+573125274711"><span>Celular Oficial:</span> +57 312 527 47 11</a>
+                                <a href="tel:+576018437511"><span>Teléfono Fijo:</span> (601) 843 7511</a>
+                            </div>
+                        </div>
 
-            <span class="school-badge">
-                Institución Organizadora
-            </span>
-
-            <h2 id="school-title" class="section-title">
-                Gimnasio Cervantes
-            </h2>
-
-            <p class="section-description">
-
-                El Gimnasio Cervantes es la institución organizadora del
-                Torneo Escolar de Carros Robots. Nuestro objetivo es fomentar
-                la creatividad, la innovación, la ingeniería y el trabajo en
-                equipo mediante experiencias que acercan a los estudiantes al
-                mundo de la ciencia y la tecnología.
-
-            </p>
-
-            <div class="school-data">
-
-                <div class="school-item">
-                    📍
-                    <div>
-                        <strong>Dirección</strong>
-                        <span>Facatativá, Cundinamarca</span>
+                        <div class="school-item">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <strong>Correo Electrónico</strong>
+                                <a href="mailto:colegiogimnasiocervantes@hotmail.com">colegiogimnasiocervantes@hotmail.com</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <a class="btn btn--primary" href="https://www.gimnasiocervantesfaca.edu.co/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        Conocer el colegio
+                    </a>
                 </div>
 
-                <div class="school-item">
-                    📞
-                    <div>
-                        <strong>Teléfono</strong>
-                        <span>(601) 8437511</span>
-                    </div>
-                </div>
-
-                <div class="school-item">
-                    ✉️
-                    <div>
-                        <strong>Correo</strong>
-                        <span>colegiogimnasiocervantes@hotmail.com</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <a
-                class="btn btn--primary"
-                href="https://www.gimnasiocervantesfaca.edu.co/"
-                target="_blank">
-
-                Conocer el colegio
-
-            </a>
-
-        </div>
-
-        <div class="school-right">
-
-            <img
-                src="assets/img/gimnasio-cervantes.png"
-                alt="Logo Gimnasio Cervantes"
-                class="school-logo">
-
-        </div>
-
-    </div>
-
-</section>
-
-        <!-- ============ CONTACTO ============ -->
-        <section id="contacto" class="contact-section" aria-labelledby="contacto-titulo">
-            <div class="contact-section__container">
-                <h2 id="contacto-titulo" class="section-title">Contacto</h2>
-                <p class="section-description">¿Tienes preguntas sobre el torneo? Escríbenos.</p>
-
-                <div class="contact-section__grid">
-                    <address class="contact-section__info" aria-label="Datos de contacto del torneo">
-                        <p><strong>Correo:</strong> <a href="mailto:colegiogimnasiocervantes@hotmail.com ">colegiogimnasiocervantes@hotmail.com </a></p>
-                        <p><strong>Teléfono:</strong> <a href="tel:+57312 527 47 11">+57 312 527 47 11</a></p>
-                        <p><strong>Dirección:</strong> Cll 9 No. 6 -71 Facatativá </p>
-                    </address>
-
-                    <form id="contactForm" class="contact-form" aria-label="Formulario de contacto" novalidate>
-                        <div class="contact-form__field">
-                            <label for="contactName" class="contact-form__label">Nombre</label>
-                            <input type="text" id="contactName" name="contactName" class="contact-form__input" autocomplete="name" required>
-                        </div>
-                        <div class="contact-form__field">
-                            <label for="contactEmail" class="contact-form__label">Correo electrónico</label>
-                            <input type="email" id="contactEmail" name="contactEmail" class="contact-form__input" autocomplete="email" required>
-                        </div>
-                        <div class="contact-form__field">
-                            <label for="contactMessage" class="contact-form__label">Mensaje</label>
-                            <textarea id="contactMessage" name="contactMessage" class="contact-form__textarea" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary" aria-label="Enviar mensaje de contacto">Enviar mensaje</button>
-                    </form>
+                <div class="school-right">
+                    <img src="assets/img/gimnasio-cervantes.png" alt="Logo Gimnasio Cervantes" class="school-logo" loading="lazy">
                 </div>
             </div>
         </section>
@@ -671,147 +649,77 @@
     </main>
 
     <!-- ============ FOOTER ============ -->
-<footer id="footer" class="footer">
-
-    <div class="footer__container">
-
-        <!-- Logo Torneo -->
-        <div class="footer__column">
-
-            <img
-                src="assets/img/logo.svg"
-                alt="Logo Torneo Escolar de Carros Robots"
-                class="footer__logo">
-
-            <h3>Torneo Escolar de Carros Robots</h3>
-
-            <p>
-                Ciencia, tecnología e innovación para las nuevas generaciones.
-            </p>
-
-        </div>
-
-        <!-- Colegio -->
-        <div class="footer__column">
-
-            <img
-                src="assets/img/gimnasio-cervantes.png"
-                alt="Logo Gimnasio Cervantes"
-                class="footer__school-logo">
-
-            <h3>Institución Organizadora</h3>
-
-            <p>
-                Gimnasio Cervantes<br>
-                Facatativá - Cundinamarca
-            </p>
-
-        </div>
-
-        <!-- Enlaces -->
-        <div class="footer__column">
-
-            <h3>Navegación</h3>
-
-            <a href="#hero">Inicio</a>
-            <a href="#deportes">Categorías</a>
-            <a href="#inscripcion">Inscripción</a>
-            <a href="#clasificaciones">Clasificaciones</a>
-            <a href="#colegio">Colegio</a>
-            <a href="#contacto">Contacto</a>
-
-        </div>
-
-        <!-- Redes -->
-        <div class="footer__column">
-
-            <h3>Síguenos</h3>
-
-            <div class="footer__social">
-
-                <a
-                    href="https://www.facebook.com/people/Gimnasio-Cervantes/100076326573949/"
-                    target="_blank"
-                    aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                </a>
-
-                <a
-                    href="https://www.instagram.com/cervantesgimnasio/"
-                    target="_blank"
-                    aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-                <a
-                    href="https://www.youtube.com/channel/UCRGGOBZ-H2oCc3MH9UlI4Dw"
-                    target="_blank"
-                    aria-label="YouTube">
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                </a>
-
-                <a
-                    href="https://www.gimnasiocervantesfaca.edu.co/"
-                    target="_blank"
-                    aria-label="Página web">
-
-                    <i class="fa-solid fa-globe"></i>
-
-                </a>
-
+    <footer id="footer" class="footer">
+        <div class="footer__container">
+            <!-- Logo Torneo -->
+            <div class="footer__column">
+                <img src="assets/img/cervantestech-mark.svg" alt="Logotipo de CervantesTech" class="footer__logo">
+                <h3>CervantesTech</h3>
+                <p>
+                    Plataforma oficial del Torneo Escolar de Carros Robots. Ciencia, ingeniería y tecnología para las futuras generaciones STEM.
+                </p>
             </div>
 
-            <div class="footer__contact">
-
+            <!-- Colegio -->
+            <div class="footer__column">
+                <img src="assets/img/gimnasio-cervantes.png" alt="Logo Gimnasio Cervantes" class="footer__school-logo">
+                <h3>Institución Sede</h3>
                 <p>
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    Facatativá, Colombia
-
+                    Gimnasio Cervantes<br>
+                    Calle 9 # 6-71 · Facatativá, Cundinamarca<br>
+                    Formación integral con visión hacia el futuro.
                 </p>
-
-                <p>
-
-                    <i class="fa-solid fa-phone"></i>
-
-                    (601) 8437511
-
-                </p>
-
-                <p>
-
-                    <i class="fa-solid fa-envelope"></i>
-
-                    colegiogimnasiocervantes@hotmail.com
-
-                </p>
-
             </div>
 
+            <!-- Enlaces -->
+            <div class="footer__column">
+                <h3>Navegación</h3>
+                <a href="#hero"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Inicio</a>
+                <a href="#modelo-3d"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Robot 3D</a>
+                <a href="#deportes"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Categorías</a>
+                <a href="#inscripcion"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Inscripciones</a>
+                <a href="#clasificaciones"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Clasificaciones</a>
+                <a href="#colegio"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Sede Oficial</a>
+            </div>
+
+            <!-- Redes -->
+            <div class="footer__column">
+                <h3>Comunidad</h3>
+                <p>Sigue las transmisiones, fotos y clasificaciones en nuestros canales oficiales:</p>
+                <div class="footer__social">
+                    <a href="https://www.facebook.com/people/Gimnasio-Cervantes/100076326573949/" target="_blank" rel="noopener noreferrer" aria-label="Facebook del Gimnasio Cervantes">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/cervantesgimnasio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram del Gimnasio Cervantes">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCRGGOBZ-H2oCc3MH9UlI4Dw" target="_blank" rel="noopener noreferrer" aria-label="YouTube del Gimnasio Cervantes">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.gimnasiocervantesfaca.edu.co/" target="_blank" rel="noopener noreferrer" aria-label="Página web del Gimnasio Cervantes">
+                        <i class="fa-solid fa-globe"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-    </div>
-
-    <div class="footer__bottom">
-
-        <p>
-
-            © <span id="currentYear">2026</span>
-            Torneo Escolar de Carros Robots ·
-            Organizado por el Gimnasio Cervantes.
-
-        </p>
-
-    </div>
-
-</footer>
+        <div class="footer__bottom">
+            <section class="footer__credits" aria-labelledby="credits-title">
+                <h2 id="credits-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Diseño y Desarrollo</h2>
+                <p>Diseño de interfaz y arquitectura web por <strong>Nicolás Valencia</strong>.</p>
+                <div class="footer__credits-links">
+                    <a href="tel:+573209843808" aria-label="Llamar a Nicolás Valencia">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i> 320 984 3808
+                    </a>
+                    <a href="https://www.instagram.com/v4lencia__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nicolás Valencia">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i> @v4lencia__
+                    </a>
+                </div>
+                <p class="footer__credits-rights">© <span id="creditsYear">2026</span> Nicolás Valencia · CervantesTech · Todos los derechos reservados.</p>
+            </section>
+            <p>Torneo Escolar de Carros Robots · Organizado y auspiciado por el Gimnasio Cervantes.</p>
+        </div>
+    </footer>
     <!-- Scripts -->
     <script defer src="js/main.js"></script>
     <script defer src="js/animations.js"></script>

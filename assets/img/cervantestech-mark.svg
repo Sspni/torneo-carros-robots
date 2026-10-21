@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Símbolo CervantesTech</title>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0d1b2d" stroke="#4285f4" stroke-width="2"/>
+  <path d="M39.5 17.5a17 17 0 1 0 0 29" fill="none" stroke="#eaf2ff" stroke-linecap="round" stroke-width="5"/>
+  <path d="M25 32h19m-7-7 7 7-7 7" fill="none" stroke="#79c5ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <circle cx="46" cy="18" r="3" fill="#79c5ff"/>
+  <circle cx="46" cy="46" r="3" fill="#79c5ff"/>
+</svg>

@@ -220,10 +220,9 @@
     animation: auroraShift 18s ease-in-out infinite;
 }
 
-/* Elementos preparados para revelarse al hacer scroll (estado inicial) */
+/* El contenido permanece visible incluso si el observador de scroll no responde. */
 .reveal {
-    opacity: 0;
-    will-change: opacity, transform, filter;
+    opacity: 1;
 }
 
 .reveal.is-visible {
@@ -322,3 +321,59 @@
         display: none;
     }
 }
+
+/* ==========================================================================
+   9. ELEMENTOS DE AMBIENTACIÓN DINÁMICA
+   ========================================================================== */
+#heroParticles {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#elegantCursor {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #00f0ff;
+    background: rgba(0, 240, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.45);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                height 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                background 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: screen;
+}
+
+#scrollProgressBar {
+    background: linear-gradient(90deg, #00f0ff, #9d4edd, #ff2a5f) !important;
+    height: 3px !important;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.8) !important;
+    z-index: 9999 !important;
+}
+
+#backToTop {
+    background: rgba(14, 22, 40, 0.85) !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.25) !important;
+    color: #00f0ff !important;
+    font-weight: 800 !important;
+    transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#backToTop:hover {
+    background: #00f0ff !important;
+    color: #040812 !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 35px rgba(0, 240, 255, 0.5) !important;
+}
+
